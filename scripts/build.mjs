@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+let html = fs.readFileSync(path.join(root, 'src/shell.html'), 'utf8');
+const css = fs.readFileSync(path.join(root, 'src/styles.css'), 'utf8');
+const code = ['model.js', 'app.js'].map(f => fs.readFileSync(path.join(root, 'src', f), 'utf8')).join('\n');
+if (/<\/script/i.test(code)) throw new Error('Embedded code contains a script closing tag');
+html = html.replace('<!-- STYLES -->', () => `<style>\n${css}\n</style>`).replace('<!-- SCRIPTS -->', () => `<script>\n${code}\n</script>`);
+fs.mkdirSync(path.join(root, 'dist'), { recursive: true });
+fs.writeFileSync(path.join(root, 'dist/index.html'), html);
+console.log('Built self-contained dist/index.html');
