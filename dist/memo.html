@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Beyond the Match Product Memo</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="document.css" />
+</head>
+<body>
+<nav aria-label="Project links"><a href="./">Open interactive demo</a><a href="demo.html">Watch the walkthrough</a><a href="prd.html">Read the PRD</a><a href="memo.html">Read the product memo</a></nav>
+<h1 id="beyond-the-match">Beyond the Match</h1>
+<p><strong>Making oncology trial drop-offs visible</strong><br />
+Akshata Anil Urs · Independent product portfolio project</p>
+<h2 id="decision">Decision</h2>
+<p>Test whether the team can account for what happened after each
+suggested match and route reversible blockers back to review. Start by
+recording a structured disposition with the least additional work for
+the coordinator.</p>
+<h2 id="screening-and-follow-up">Screening and follow-up</h2>
+<p>A candidate match starts a review of the trial’s eligibility
+criteria. The research team then confirms eligibility and follows up on
+whether the patient wants to participate. This creates several distinct
+outcomes to capture, including unresolved evidence, an exclusion, or a
+documented decision to decline. The prototype tests a way to record
+those outcomes and hand off unresolved questions. <a
+href="https://www.cancer.gov/research/participate/clinical-trials/what-to-expect">National
+Cancer Institute clinical trial participation</a> · <a
+href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/eligibility-criteria">National
+Cancer Institute eligibility criteria</a></p>
+<h2 id="proposed-workflow">Proposed workflow</h2>
+<ol type="1">
+<li>Keep one reversible blocker visible with an owner, a review
+deadline, and a trigger. A new result reopens the specific criterion for
+review.</li>
+<li>Ask for a structured reason at closure. Record patient decline as a
+valid outcome. Keep pending results open and review aging cases so the
+documentation metric cannot improve just by delaying closure.</li>
+<li>Preserve the original AI suggestion and citation when a reviewer
+overrides it. Capture the corrected assessment, evidence, and failure
+tag at the time of review.</li>
+<li>Surface repeated blockers as aggregate counts and make the reviewed
+evidence available in a visit brief. The prototype uses fictional
+records and a local brief preview.</li>
+</ol>
+<h2 id="measures-and-learning">Measures and learning</h2>
+<ul>
+<li><strong>Verified accrual conversion:</strong> confirmed enrollments
+divided by clinically verified eligible patient–trial pairs with a
+completed follow-up window. Review the rate by protocol and site when
+volumes support comparison.</li>
+<li><strong>Documented disposition rate:</strong> closed pairs with a
+recorded outcome and applicable reason divided by all closed pairs. Aim
+for zero undocumented closures and monitor how long pending cases remain
+open.</li>
+<li><strong>Evaluation quality:</strong> score a fixed reference set
+independently of reviewer overrides. Track unique suggestions reviewed,
+unique suggestions overridden, and total override actions. Each action
+records the reviewer, time, original and corrected assessments,
+evidence, and reason. In a pilot, track which corrections are
+actionable, where reviewers disagree, and how much time review takes.
+Sampling unchanged suggestions helps catch errors that nobody
+overrides.</li>
+</ul>
+<p>A pilot would compare documentation completeness and coordinator
+effort before and after introducing the workflow. Reviewed corrections
+could support regression tests or identify annotation priorities. Any
+improvement in production model reliability or annotation cost would
+require evidence from that pilot.</p>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trial Review Desk product requirements</title>
+<link rel="stylesheet" href="document.css">
+</head>
+<body>
+<nav aria-label="Project links"><a href="index.html">Open interactive demo</a><a href="demo.html">Watch the walkthrough</a><a href="prd.html">Read the PRD</a><a href="memo.html">Read the product memo</a></nav>
+<h1 id="trial-review-desk-product-requirements-document">Trial Review
+Desk Product Requirements Document</h1>
+<p><strong>Version 2.1 · Independent product portfolio project · Akshata
+Anil Urs</strong></p>
+<h2 id="1-problem-and-audience">1. Problem and audience</h2>
+<p>An oncology trial coordinator may need to compare a possible
+patient–trial pair against a protocol, account for missing or
+conflicting evidence, and explain the next action to another reviewer.
+The product hypothesis is that keeping the source, assessment, and
+follow-up owner together can make that handoff clearer. Desk research
+informed the concept. Coordinator discovery and clinical validation
+remain future work.</p>
+<p>The primary user is a clinical research coordinator. A clinical lead
+receives questions requiring professional judgment. The demo starts with
+a shortlist of possible matches. It uses ten fictional patient–trial
+pairs, nine fictional patients, and two invented protocols.</p>
+<h2 id="2-goals-and-scope">2. Goals and scope</h2>
+<p><strong>Goal.</strong> Give coordinators traceable decisions and a
+clear next action for each possible match. Give product teams visibility
+into where manual review is needed.</p>
+<p><strong>In scope.</strong> The prototype includes the review queue,
+criterion-level evidence review, task assignment and resolution,
+decision history, coordinator handoff and completion, and filtered
+workflow metrics. Records and evidence updates are prewritten. The
+prototype runs in one browser using local storage where available.
+<strong>Future scope.</strong> Shared workspaces, hospital integrations,
+and automated matching would require separate discovery. Qualified study
+teams make eligibility and enrollment decisions.</p>
+<h2 id="3-workflow">3. Workflow</h2>
+<ol type="1">
+<li>Open a patient–trial pair in the queue.</li>
+<li>Compare a protocol check with its dated source excerpts. Save an
+assessment and a reason.</li>
+<li>For missing or conflicting information, assign a follow-up to an
+owner with a deadline. Resolve the task with a note when the question is
+addressed. Reassess separately when needed.</li>
+<li>Save a handoff when all inclusions are marked <strong>Met</strong>,
+all exclusions are ruled out, and there are no open tasks. Record the
+coordinator review outcome and reason to complete the review.</li>
+<li>If evidence changes, recheck the affected item. Retain the prior
+outcome in decision history.</li>
+</ol>
+<p>See the <a href="../docs/Workflow.md">workflow diagram</a> and <a
+href="../docs/User_Stories.md">user stories</a> for example
+scenarios.</p>
+<h2 id="4-requirements-and-acceptance-criteria">4. Requirements and
+acceptance criteria</h2>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requirement</th>
+<th>Acceptance criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R1</td>
+<td>Find a pair and its evidence</td>
+<td>Sort the queue by upcoming visit. Search or filter by protocol,
+owner, or status. Opening a check shows the dated source ID and excerpt.
+An absent source is visible as a gap.</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td>Record uncertainty</td>
+<td>Support Met, Not met, Insufficient information, and Conflicting
+evidence. Require reviewer and reason on save. C001 shows a pending
+report. C002 shows both conflicting records and leaves their
+interpretation to the reviewer.</td>
+</tr>
+<tr class="odd">
+<td>R3</td>
+<td>Keep follow-up separate</td>
+<td>Require a linked check, issue, owner, and deadline. Require a note
+when resolving a task. Closing a task leaves the criterion assessment
+unchanged.</td>
+</tr>
+<tr class="even">
+<td>R4</td>
+<td>Preserve decisions</td>
+<td>Record reviewer, timestamp, reason, and previous and new values when
+relevant. C006 reopens on new evidence, asks for reassessment, and
+retains the prior outcome.</td>
+</tr>
+<tr class="odd">
+<td>R5</td>
+<td>Gate handoff</td>
+<td>Enable handoff only when all inclusion criteria are Met, all
+exclusions are ruled out, and tasks are closed. Label the state Ready
+for clinical review.</td>
+</tr>
+<tr class="even">
+<td>R6</td>
+<td>Close coordinator work explicitly</td>
+<td>Require all checks assessed, no unresolved evidence or open tasks,
+and a recorded outcome and reason. A confirmed exclusion or unmet
+inclusion allows closure as Not supported on current evidence after
+remaining work is resolved. Require the Ineligible disposition to
+complete that closure.</td>
+</tr>
+<tr class="odd">
+<td>R7</td>
+<td>Keep metrics consistent</td>
+<td>Apply queue filters to metric denominators. Empty rate denominators
+show No data. Reset restores the fictional dataset and scenario
+time.</td>
+</tr>
+<tr class="even">
+<td>R8</td>
+<td>Support independent review</td>
+<td>Provide a project guide and keyboard-accessible controls. Reopen
+saved state after reload when browser storage is available. Provide a
+session-only fallback.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="watchlist-ai-evaluation-and-outcome-tracking">Watchlist, AI
+evaluation, and outcome tracking</h3>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requirement</th>
+<th>Acceptance criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R9</td>
+<td>Model exclusions explicitly</td>
+<td>C005 has all inclusions met and one confirmed exclusion. Handoff is
+blocked and the structured disposition is visible. Gaps and conflicts
+stay unresolved.</td>
+</tr>
+<tr class="even">
+<td>R10</td>
+<td>Track a reversible blocker</td>
+<td>C001 appears with the blocker, owner, deadline, and trigger. A
+simulated biomarker update appends evidence and asks for reassessment.
+The existing follow-up stays open.</td>
+</tr>
+<tr class="odd">
+<td>R11</td>
+<td>Capture AI review with traceable evidence</td>
+<td>A cited passage is clickable. In C007, overriding the stale
+suggestion preserves its original citation and captures the revised
+assessment, source, reason, and error tag.</td>
+</tr>
+<tr class="even">
+<td>R12</td>
+<td>Separate evaluation from feedback</td>
+<td>Show blocker precision and recall and cited-prediction accuracy over
+seven frozen examples. Log human decisions separately with reviewer,
+time and original/corrected values. Show the number of suggestions
+reviewed and overridden, plus total override actions. Label the
+enrollment panel as fictional.</td>
+</tr>
+<tr class="odd">
+<td>R13</td>
+<td>Show disqualifiers by protocol</td>
+<td>Display total blocks, sole blockers, and fully reviewed denominators
+for the selected cohort. Exclude unresolved cases.</td>
+</tr>
+<tr class="even">
+<td>R14</td>
+<td>Preview a visit brief</td>
+<td>Build four fields from the simulated record: trial, reviewed
+evidence, remaining question, and next action. Link reviewed evidence to
+its source.</td>
+</tr>
+<tr class="odd">
+<td>R15</td>
+<td>Document match closure</td>
+<td>Require a structured disposition for a terminal match outcome. A
+simulated enrollment additionally requires confirmed eligibility and
+cleared review.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-measures">5. Measures</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coverage</td>
+<td>Selected pairs with at least one saved assessment divided by
+selected pairs.</td>
+</tr>
+<tr class="even">
+<td>Completion</td>
+<td>Selected pairs with a completed coordinator review divided by
+selected pairs.</td>
+</tr>
+<tr class="odd">
+<td>Unresolved</td>
+<td>Selected pairs with missing or conflicting evidence or an open
+follow-up divided by selected pairs. Count each pair once.</td>
+</tr>
+<tr class="even">
+<td>Open follow-ups</td>
+<td>Open tasks in the selected queue, including the count overdue at the
+scenario time.</td>
+</tr>
+<tr class="odd">
+<td>Median turnaround</td>
+<td>Median elapsed time from first saved action to latest completion for
+currently completed pairs. Includes waiting.</td>
+</tr>
+</tbody>
+</table>
+<p>Pilot outcomes to test are the share of surfaced matches with a
+documented next step or terminal disposition and the share of verified
+eligible pairs that enroll. Measure both for a defined cohort and
+follow-up window. Report manual review activity alongside the fixed
+benchmark to show the effort behind corrections.</p>
+<p>The starting queue has two completed reviews and four unresolved
+pairs out of ten. The 68-minute starting median comes from two authored
+examples of 54 and 82 minutes. These figures demonstrate the
+calculations.</p>
+<h2 id="6-validation-and-next-decision">6. Validation and next
+decision</h2>
+<p>Forty-three automated checks and browser walkthroughs covered missing
+and conflicting evidence, handoff conditions, reopening, history,
+filtering, reset, and persistence in the browser preview. The next
+research step is to observe two to three coordinators using C001 and
+C002. Record whether they find the evidence gap, assign an owner, and
+correctly explain what must happen before handoff. Use observed errors
+and hesitation to prioritize revisions.</p>
+<p>The <a href="../docs/Product_Memo.md">product memo</a> defines the
+proposed pilot outcome measures. The Inspector’s benchmark and in-basket
+preview use authored examples.</p>
+<h2 id="7-sources">7. Sources</h2>
+<ul>
+<li><a
+href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/eligibility-criteria">National
+Cancer Institute eligibility criteria</a></li>
+<li><a
+href="https://www.cancer.gov/research/participate/clinical-trials/what-to-expect">National
+Cancer Institute clinical trial participation</a></li>
+</ul>
+</body>
+</html>

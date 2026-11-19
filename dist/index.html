@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An independent product portfolio demo of oncology trial screening review. All records and protocols are fictional.">
+  <meta name="theme-color" content="#41366f">
+  <title>Trial Review Desk · Independent portfolio demo</title>
+  <style>
+:root{--ink:#25263b;--muted:#686a7d;--purple:#6553a0;--purple-dark:#453676;--lilac:#f0ecf9;--paper:#f6f7fb;--line:#e4e5ed;--green:#217763;--amber:#986017;--red:#a5464e;--white:#fff;--radius:12px;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:14px;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}a{color:var(--purple-dark)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9c83dc;outline-offset:3px}svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;background:none;color:inherit}h1,h2,h3,p{margin:0}h1{font-size:29px;letter-spacing:-.9px;font-weight:650;line-height:1.25}h2{font-size:18px;letter-spacing:-.35px;font-weight:650}h3{font-size:14px;font-weight:650}p{line-height:1.65}small{font-size:12px}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--purple)}.skip-link{position:fixed;top:-100px;left:12px;z-index:200;background:#fff;padding:12px}.skip-link:focus{top:12px}
+.layout{display:grid;grid-template-columns:222px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;background:var(--white);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:31px 17px 22px}.brand{display:flex;align-items:center;gap:11px;margin:0 8px 40px;text-decoration:none;color:var(--ink)}.brand-mark{display:grid;place-items:center;width:35px;height:39px;border:1px solid #d9d1eb;color:var(--purple);border-radius:11px 11px 11px 2px;background:linear-gradient(135deg,#f8f5fe,#fff)}.brand-mark svg{width:24px;height:24px}.brand strong{font-size:15px;font-weight:680;letter-spacing:-.2px;display:block}.brand small{font-size:10px;color:var(--muted);display:block;margin-top:3px;letter-spacing:.4px}.nav-caption{padding:0 13px 12px;font-size:10px;letter-spacing:1.4px;color:#9192a1;font-weight:700}.nav{display:flex;flex-direction:column;gap:6px}.nav button{justify-content:flex-start;gap:11px;width:100%;height:44px;text-align:left;border-radius:8px;padding:0 12px;color:#696a7d;font-size:13px;font-weight:550}.nav button:hover{background:#f8f7fc}.nav button.active{background:var(--lilac);color:var(--purple-dark)}.nav button .count{margin-left:auto;background:#fff;font-size:11px;min-width:23px;line-height:22px;text-align:center;border:1px solid var(--line);border-radius:6px}.nav .nav-guide{margin-top:24px;border-top:1px solid var(--line);border-radius:0;padding-top:15px;height:59px}.sidebar-bottom{margin-top:auto;padding:20px 9px 0}.project-label{font-size:10px;letter-spacing:1.3px;color:#8a8b9b;font-weight:700;margin-bottom:12px}.author{display:flex;gap:10px;align-items:center}.avatar{height:32px;width:32px;border-radius:50%;background:#f0edf7;color:var(--purple-dark);display:grid;place-items:center;font-size:11px;font-weight:650}.author strong{display:block;font-size:12px;font-weight:600}.author small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.workspace{min-width:0}.topbar{height:79px;background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 35px}.breadcrumbs{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:11px}.breadcrumbs svg{width:14px;height:14px;color:#a6a6b3}.breadcrumbs span:last-child{color:var(--ink);font-weight:550}.top-actions{display:flex;align-items:center;gap:19px}.clock-block{font-size:11px;text-align:right;color:var(--muted);line-height:1.5}.clock-block strong{color:#4c4e62;font-size:11px;font-weight:550;display:block}.actor{padding-left:18px;border-left:1px solid var(--line)}.actor label{display:block;font-size:9px;color:var(--muted);margin-bottom:3px;letter-spacing:.6px;text-transform:uppercase}.actor select{border:0;background:transparent;color:var(--ink);font-size:12px;max-width:155px;font-weight:550;padding:2px 15px 2px 0}.scenario-banner{display:flex;align-items:center;gap:8px;border-bottom:1px solid #e4e0f0;background:#f1eef8;padding:9px 35px;color:#665884;font-size:11px}.scenario-banner svg{width:14px;height:14px}.scenario-banner button{margin-left:auto;font-size:11px;font-weight:600;color:var(--purple-dark);padding:0;white-space:nowrap}.main{padding:32px 35px 22px;max-width:1650px;margin:0 auto}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px}.page-head .eyebrow{margin-bottom:8px}.page-head p{margin-top:8px;color:var(--muted);font-size:13px}.head-buttons{display:flex;gap:9px;margin-top:20px;align-items:center}.btn{min-height:37px;border-radius:7px;padding:8px 13px;font-size:12px;font-weight:600;border:1px solid var(--line);background:white;text-decoration:none;line-height:1.5}.btn svg{width:16px;height:16px}.btn:hover:not(:disabled){background:#f8f7fc;border-color:#cbc3df}.btn.primary{background:var(--purple-dark);border-color:var(--purple-dark);color:white}.btn.primary:hover:not(:disabled){background:#56428d}.btn.subtle{background:none;border-color:transparent;color:var(--muted)}.btn.danger{color:var(--red);border-color:#eed7d9}.btn.full{width:100%}.intro-strip{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 19px;border:1px solid #ddd6ec;border-radius:var(--radius);background:linear-gradient(110deg,#f2eefb,#fbfaff);margin-bottom:24px}.intro-text{display:flex;align-items:center;gap:13px}.intro-icon{width:35px;height:35px;border-radius:10px;background:#e9e3f6;display:grid;place-items:center;color:var(--purple)}.intro-text strong{font-size:12px;font-weight:650;display:block;margin-bottom:3px}.intro-text p{font-size:11px;color:#757083}.intro-links{display:flex;gap:8px;flex-shrink:0}.intro-links .btn{font-size:11px;min-height:32px;padding:5px 10px}.metrics-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:25px}.metric{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:17px 19px;min-width:0}.metric .metric-label{display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:550;color:var(--muted);margin-bottom:14px}.metric svg{height:16px;width:16px;color:#a2a1b4}.metric-value{font-size:28px;letter-spacing:-1px;font-weight:650;line-height:1;display:flex;align-items:baseline;gap:5px}.metric-value small{font-size:12px;letter-spacing:0;font-weight:450;color:var(--muted)}.metric-note{font-size:10px;color:var(--muted);margin-top:9px;line-height:1.5}.metric-note .dot{display:inline-block;width:6px;height:6px;background:#b7a6d7;border-radius:50%;margin-right:5px}.metric-value.purple{color:var(--purple-dark)}.metric-value.amber{color:var(--amber)}.section-line{display:flex;justify-content:space-between;align-items:center;gap:15px;margin:5px 0 15px}.section-line h2{font-size:15px}.section-line .muted{font-size:11px}.panel{border:1px solid var(--line);border-radius:var(--radius);background:white;overflow:hidden}.filterbar{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line);flex-wrap:wrap}.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:7px;padding:0 10px;min-width:200px;flex:1;background:#fff}.search svg{width:16px;height:16px;color:#a1a0b1}.search input{width:100%;height:35px;border:0;outline:none!important;background:transparent;font-size:12px;color:var(--ink)}.filter-field label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}.filter-field select{height:36px;max-width:180px;background:#fff;border:1px solid var(--line);border-radius:7px;color:#606176;font-size:11px;padding:0 26px 0 10px}.filterbar .btn{font-size:11px;min-height:33px;padding:6px 8px}.table-scroll{overflow-x:auto}.data-table{border-collapse:collapse;width:100%;text-align:left;white-space:nowrap}.data-table th{font-size:10px;color:#8b8b9c;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:14px 17px;border-bottom:1px solid var(--line);background:#fcfcfe}.data-table td{padding:16px 17px;border-bottom:1px solid #eff0f5;font-size:12px;vertical-align:middle}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#faf9fd}.data-table .pair-button{display:flex;align-items:center;gap:10px;padding:0;text-align:left;justify-content:flex-start}.patient-symbol{width:33px;height:33px;background:#f3f1f8;border:1px solid #e9e5f1;border-radius:8px;display:grid;place-items:center;color:#9283b0}.patient-symbol svg{width:16px;height:16px}.patient-name{font-size:12px;font-weight:650;line-height:1.5;display:block}.patient-id{font-size:10px;color:#8a8a9c;display:block;font-weight:400;line-height:1.6}.protocol-name{display:block;font-size:11px;font-weight:550}.protocol-tag{display:block;font-size:10px;color:#8b8b9c;margin-top:4px}.owner-chip{display:flex;align-items:center;gap:6px;color:#66677a;font-size:11px}.owner-mini{width:22px;height:22px;border-radius:50%;background:#eeebf6;display:inline-grid;place-items:center;font-size:9px;color:#766497}.progress-text{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:center}.progress-track{display:inline-flex;width:46px;height:4px;border-radius:4px;background:#eeeaf5;overflow:hidden}.progress-track span{background:#a392c9;height:100%;border-radius:4px}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:5px;padding:5px 7px;font-size:10px;font-weight:550;line-height:1.1;white-space:nowrap;background:#f1f2f6;color:#72748a}.badge svg{height:11px;width:11px;stroke-width:2}.badge.green{background:#eaf5f0;color:#367960}.badge.amber{background:#fff4e1;color:#97641c}.badge.purple{background:#eee9f7;color:#746097}.badge.red{background:#fbecef;color:#a44c5d}.badge.blue{background:#edf1fa;color:#536b99}.badge.gray{background:#f0f1f5;color:#858599}.flag{font-size:10px;color:var(--amber);display:flex;align-items:center;gap:4px;margin-top:5px}.flag.conflict{color:#a25a81}.flag svg{width:10px;height:10px}.arrow-button{width:28px;height:28px;border-radius:6px;color:#a3a1b3}.arrow-button:hover{background:#eee9f7;color:var(--purple)}.arrow-button svg{width:16px;height:16px}.table-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:13px 17px;border-top:1px solid var(--line);font-size:10px;color:#8a899c;background:#fdfdff}.footer{display:flex;justify-content:space-between;gap:15px;padding:20px 0 0;color:#9896a8;font-size:10px;line-height:1.5}.footer span{display:flex;align-items:center;gap:5px}.footer svg{width:12px;height:12px}.empty{text-align:center;padding:55px 25px}.empty svg{width:30px;height:30px;color:#c0b7d6;margin-bottom:12px}.empty h3{margin-bottom:8px}.empty p{font-size:12px;color:var(--muted);margin-bottom:17px}.back-link{color:var(--muted);font-size:11px;padding:0;margin-bottom:20px}.back-link svg{width:14px;height:14px}.detail-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:11px;color:var(--muted)}.detail-meta>span{display:inline-flex;align-items:center;gap:5px}.detail-meta svg{width:13px;height:13px}.detail-head{margin-bottom:20px}.detail-head h1{display:flex;align-items:center;gap:13px}.detail-head h1 .patient-symbol{width:40px;height:40px}.detail-head .badge{margin-top:4px}.tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:0 0 22px}.tab{font-size:12px;font-weight:550;color:#8a879c;padding:12px 1px 14px;position:relative;border-bottom:2px solid transparent}.tab.active{color:var(--purple-dark);border-bottom-color:var(--purple)}.tab small{margin-left:2px;background:#ece8f5;border-radius:4px;padding:2px 5px;font-size:9px;color:#796b92}.review-grid{display:grid;grid-template-columns:255px minmax(0,1fr);gap:19px;align-items:start}.criteria{overflow:hidden}.criteria-head{padding:18px 17px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.criteria-head h2{font-size:12px}.criteria-head span{color:var(--muted);font-size:10px}.criterion{display:flex;width:100%;padding:18px 15px;gap:10px;align-items:flex-start;justify-content:flex-start;text-align:left;border-bottom:1px solid #efedf4;border-left:3px solid transparent}.criterion:last-of-type{border-bottom:0}.criterion:hover{background:#faf9fd}.criterion.selected{background:#f6f3fc;border-left-color:var(--purple)}.criterion-code{display:grid;place-items:center;width:24px;height:24px;background:#eeebf5;color:#8675a3;border-radius:6px;font-size:9px;font-weight:600;flex-shrink:0}.criterion strong{font-size:11px;font-weight:550;display:block;line-height:1.6;margin-bottom:8px}.criterion .badge{font-size:9px;max-width:100%;white-space:normal;line-height:1.4}.criteria-note{padding:14px 17px;background:#fcfbff;font-size:10px;color:#8e879e;line-height:1.6;border-top:1px solid var(--line)}.evidence-column{min-width:0}.evidence-head{padding:20px 22px;display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid var(--line)}.evidence-head .eyebrow{font-size:9px;margin-bottom:7px}.evidence-head h2{font-size:16px}.evidence-head p{color:var(--muted);font-size:11px;margin-top:5px}.source-list{padding:19px 22px}.source{border:1px solid var(--line);border-radius:8px;margin-bottom:12px;overflow:hidden}.source:last-child{margin-bottom:0}.source-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #edecf3;background:#faf9fd;font-size:10px;color:#8a849a}.source-head strong{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:#645673;font-weight:600}.source-head svg{height:13px;width:13px}.source p{padding:17px 15px;font-size:12px;line-height:1.8;color:#505066}.source p strong{background:#f0ebfb;font-weight:500;padding:2px 3px}.evidence-note{display:flex;align-items:flex-start;gap:7px;color:#8b7d99;font-size:10px;line-height:1.6;margin-top:12px}.evidence-note svg{width:13px;height:13px;margin-top:2px}.assessment{border-top:1px solid var(--line);padding:21px 22px}.assessment h3{margin-bottom:5px}.assessment>p{font-size:11px;color:var(--muted);margin-bottom:17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-field label{display:block;font-size:11px;font-weight:600;margin:0 0 7px;color:#5c5770}.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid #dedbe8;border-radius:7px;background:#fff;padding:10px 11px;color:var(--ink);font-size:12px;line-height:1.5}.form-field textarea{resize:vertical;min-height:80px}.form-field.wide{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:14px}.form-actions .muted{font-size:10px;margin-right:auto}.error{color:#a13b50;font-size:12px;line-height:1.6;margin-top:10px}.review-outcome{margin-top:21px;padding:19px 22px}.outcome-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:10px}.outcome-head h2{font-size:14px}.outcome-head p{font-size:11px;color:var(--muted);margin-top:6px}.outcome-reason{font-size:11px;color:#7a738b;margin-top:8px}.outcome-actions{display:flex;gap:9px;justify-content:flex-end;margin-top:17px}.outcome-rules{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px;padding-top:10px;border-top:1px solid #efedf5;line-height:1.6}.outcome-rules svg{width:13px;height:13px}.snapshot-note{font-size:10px;color:#877d9b;margin-bottom:15px;line-height:1.6}.task-list{display:flex;flex-direction:column;gap:12px}.task-card{padding:19px 21px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.task-card h3{font-size:13px;line-height:1.6}.task-meta{display:flex;align-items:center;gap:13px;font-size:10px;color:var(--muted);margin-top:9px;flex-wrap:wrap}.task-card p{font-size:11px;margin-top:12px;color:var(--muted)}.task-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:15px}.segmented{display:flex;gap:3px;background:#ecebf3;padding:3px;border-radius:7px}.segmented button{padding:6px 12px;font-size:11px;border-radius:5px;color:#8b849b}.segmented button.active{background:#fff;color:var(--purple-dark);box-shadow:0 1px 3px #27203d0d}.history{padding:4px 25px 12px}.event{display:grid;grid-template-columns:27px 1fr;gap:12px;padding:19px 0 3px}.event-mark{width:25px;height:25px;background:#f1ecf9;color:#9887b6;border-radius:50%;display:grid;place-items:center}.event-mark svg{width:12px;height:12px}.event-content{border-bottom:1px solid #f0eef5;padding:1px 0 17px}.event:last-child .event-content{border:0}.event-content h3{font-size:12px}.event-content p{font-size:11px;color:#706a80;margin-top:7px;line-height:1.7;overflow-wrap:anywhere}.event-meta{display:flex;align-items:center;gap:10px;margin-top:9px;color:#a29bad;font-size:10px;flex-wrap:wrap}.history-note{margin-top:15px;font-size:11px;color:var(--muted)}.analytics-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:23px 0}.analytics-grid .metric{padding:22px}.analytics-grid .metric-value{font-size:34px}.analytics-grid .metric-note{font-size:11px}.analysis-row{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}.chart-panel{padding:24px}.chart-panel h2{font-size:15px;margin-bottom:8px}.chart-panel>p{font-size:11px;color:var(--muted)}.stacked{display:flex;width:100%;height:16px;border-radius:5px;overflow:hidden;background:#f0edf6;margin:25px 0 20px}.stacked span{min-width:0}.legend-list{display:grid;gap:14px}.legend-item{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#746e85}.legend-item span{display:flex;align-items:center;gap:9px}.legend-dot{height:8px;width:8px;border-radius:3px;display:inline-block}.definition-list{padding:0;margin:15px 0 0;list-style:none}.definition-list li{font-size:11px;color:#777084;line-height:1.7;padding:11px 0;border-top:1px solid #efedf4}.definition-list strong{font-weight:600;color:#4c435d}.guide-intro{max-width:740px;color:var(--muted);font-size:13px;margin-top:12px;line-height:1.8}.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:25px}.scenario-card{padding:23px 21px;display:flex;flex-direction:column;align-items:flex-start}.scenario-card .step-number{color:#a49ab7;font-size:11px;margin-bottom:24px}.scenario-card h2{font-size:16px;line-height:1.5;margin-bottom:10px}.scenario-card p{font-size:12px;color:var(--muted);margin-bottom:22px;line-height:1.8}.scenario-card .btn{margin-top:auto}.guide-body{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;margin-top:23px}.guide-section{padding:25px}.guide-section h2{font-size:16px;margin-bottom:15px}.guide-section p,.guide-section li{font-size:12px;color:#756d84;line-height:1.85}.guide-section ol{padding-left:18px;display:grid;gap:12px;margin:0}.guide-section strong{color:#4d425e;font-weight:600}.guide-section a{color:#655080}.guide-section ul{padding-left:18px;margin:12px 0 0}.guide-section .muted{font-size:11px;margin-top:14px}.guide-section .mini-divider{border-top:1px solid var(--line);margin-top:20px;padding-top:19px}.guide-section .mini-divider h3{margin-bottom:10px}.storage-warning{padding:13px 18px;background:#fff4df;color:#93611c;font-size:12px;border:1px solid #eedea8;border-radius:7px;margin-bottom:15px}#toast{position:fixed;bottom:24px;left:calc(50% + 80px);transform:translate(-50%,20px);background:#302746;color:#fff;border-radius:9px;padding:13px 19px;font-size:12px;box-shadow:0 8px 30px #28203c20;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:100;max-width:min(90vw,550px);line-height:1.7}#toast.visible{opacity:1;transform:translate(-50%,0)}dialog{border:1px solid #e4dfea;border-radius:15px;padding:0;width:min(530px,calc(100vw - 32px));color:var(--ink);box-shadow:0 25px 100px #19102730}dialog::backdrop{background:#29223855;backdrop-filter:blur(2px)}.modal-body{padding:28px}.modal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:12px}.modal-top h2{font-size:20px;line-height:1.4}.close-btn{padding:2px;color:#9990aa}.close-btn svg{width:19px;height:19px}.modal-body>p{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:21px}.modal-body .form-field{margin-top:14px}.modal-body .form-actions{margin-top:24px}.modal-note{font-size:11px;color:#8a7f9d;line-height:1.8;margin:15px 0}.pill-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.analytic-filter-note{font-size:11px;color:var(--muted);margin:13px 0}.no-source{padding:25px;border:1px dashed #d8c9e7;border-radius:8px;background:#fcf9ff}.no-source strong{display:block;font-size:12px;margin-bottom:7px}.no-source p{font-size:11px;color:#8e7c9b}
+@media(min-width:1500px){.main{padding-top:38px}.data-table td{padding-top:20px;padding-bottom:20px}.review-grid{grid-template-columns:290px minmax(0,1fr)}}
+@media(max-width:1190px){.layout{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding-left:11px;padding-right:11px}.brand{gap:7px}.brand strong{font-size:13px}.topbar{padding:0 24px}.main{padding:27px 24px}.scenario-banner{padding-left:24px;padding-right:24px}.top-actions{gap:12px}.clock-block{display:none}.metrics-row{gap:10px}.metric{padding:16px 14px}.data-table th,.data-table td{padding-left:13px;padding-right:13px}.review-grid{grid-template-columns:225px minmax(0,1fr)}.intro-links{flex-direction:column}.analysis-row{grid-template-columns:1fr}.guide-grid{gap:10px}.guide-body{grid-template-columns:1fr}.source-head{align-items:flex-start;flex-direction:column;gap:5px}}
+@media(max-width:900px){.metrics-row{grid-template-columns:repeat(2,minmax(0,1fr))}.head-buttons{flex-direction:column;align-items:stretch;margin-top:10px}.review-grid{grid-template-columns:1fr}.criteria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.criteria-head{grid-column:1/-1}.criterion{padding:14px 10px;gap:7px;border-right:1px solid var(--line);border-bottom:0;border-left:0;border-top:3px solid transparent}.criterion.selected{border-left:0;border-top-color:var(--purple)}.criterion-code{display:none}.criteria-note{grid-column:1/-1}.guide-grid{grid-template-columns:1fr}.scenario-card .step-number{margin-bottom:13px}.scenario-card p{margin-bottom:14px}.analytics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.intro-strip{align-items:flex-start}.intro-icon{display:none}.intro-links{flex-direction:row}.intro-links .btn{font-size:10px}.detail-head h1{font-size:25px}.detail-head .head-buttons{display:none}}
+@media(max-width:700px){.layout{display:block}.sidebar{position:static;height:auto;padding:15px 15px 0;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 0 15px 2px}.brand-mark{height:29px;width:29px;border-radius:8px}.brand-mark svg{width:20px;height:20px}.brand strong{font-size:14px}.brand small{display:none}.nav{flex-direction:row;gap:3px;padding-bottom:8px;overflow-x:auto}.nav button{width:auto;flex-shrink:0;gap:6px;height:35px;padding:0 10px;font-size:10px}.nav button svg{width:14px;height:14px}.nav button .count{display:none}.nav .nav-guide{margin:0;padding:0 10px;height:35px;border:0;border-radius:7px}.nav-caption,.sidebar-bottom{display:none}.topbar{height:61px;padding:0 18px;gap:5px}.breadcrumbs{font-size:10px;gap:6px}.breadcrumbs span:first-child{display:none}.breadcrumbs svg{display:none}.actor{padding:0;border:0}.actor label{font-size:8px}.actor select{font-size:10px;max-width:130px}.main{padding:25px 16px 18px}.scenario-banner{padding:9px 16px;font-size:9px;line-height:1.6;gap:7px}.scenario-banner button{display:none}.scenario-banner svg{display:none}.page-head{gap:10px;margin-bottom:20px}.page-head h1{font-size:25px}.page-head p{font-size:11px}.head-buttons .btn{font-size:10px;padding:6px 8px;min-height:30px}.head-buttons .btn svg{width:13px;height:13px}.head-buttons{margin-top:24px}.intro-strip{padding:14px 15px;display:block}.intro-text strong{font-size:11px}.intro-text p{font-size:10px}.intro-links{margin-top:12px}.metric .metric-label{font-size:10px}.metric-value{font-size:25px}.metric-note{font-size:9px}.metrics-row{margin-bottom:22px;gap:10px}.metric{padding:15px 13px}.filterbar{padding:12px;gap:8px}.search{flex-basis:100%;min-width:0}.filter-field{flex:1;min-width:0}.filter-field select{width:100%;max-width:100%;font-size:10px;padding-left:8px}.filterbar .btn{font-size:10px;padding:4px}.section-line .muted{font-size:10px}.table-footer{align-items:flex-start;font-size:9px}.table-footer span:last-child{max-width:145px;text-align:right}.footer{display:block;font-size:9px;line-height:1.8}.footer span{margin-bottom:5px}.tabs{gap:16px}.tab{font-size:10px;gap:4px}.tab small{font-size:8px}.detail-meta{gap:9px;font-size:10px}.evidence-head{padding:18px 16px;display:block}.evidence-head .badge{margin-top:12px}.source-list,.assessment{padding:17px 16px}.evidence-head h2{font-size:15px}.form-grid{grid-template-columns:1fr}.form-field.wide{grid-column:auto}.form-actions{flex-wrap:wrap}.form-actions .muted{flex-basis:100%}.criterion strong{font-size:10px}.criterion .badge{font-size:8px}.review-outcome{padding:18px 16px}.outcome-head{display:block}.outcome-head .badge{margin-top:12px}.outcome-actions{flex-wrap:wrap}.outcome-actions .btn{flex:1;font-size:10px}.outcome-rules{font-size:9px}.task-card{padding:17px 15px;display:block}.task-card>.btn{margin-top:15px}.task-toolbar{align-items:flex-start}.task-toolbar>.muted{max-width:150px;line-height:1.5}.history{padding:3px 16px 10px}.event-content p{font-size:10px}.event-meta{gap:5px;font-size:9px}.analytics-grid{gap:10px}.analytics-grid .metric{padding:16px}.analytics-grid .metric-value{font-size:28px}.analytics-grid .metric-note{font-size:9px}.guide-section{padding:21px 18px}.guide-section p,.guide-section li{font-size:11px}.guide-grid{margin-top:20px}.outcome-head h2{font-size:13px}.source-head{font-size:9px}.source p{font-size:11px}.modal-body{padding:24px 21px}#toast{left:50%;bottom:18px;font-size:11px;width:max-content;max-width:90vw}.chart-panel{padding:20px 18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Workbench v2 */
+.modes,.v2-actions{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
+.modes{margin-bottom:1.2rem}
+.v2-spaced{margin-top:1.15rem}
+.ai-inline{margin:0 18px 15px;padding:14px;border:1px solid #dfd5f0;border-radius:10px;background:#f6f2fb;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ai-inline h3,.ai-inline p{margin:0}
+.citation-link{border:0;background:transparent;padding:2px;color:#54348b;font:inherit;text-decoration:underline;cursor:pointer}
+.source:focus{outline:2px solid #7858b0;outline-offset:2px}
+.source mark{background:#fae2a6;color:#302442;border-radius:3px;padding:2px}
+.criterion-group{grid-column:1/-1;margin:0;padding:10px 14px 4px;font-size:.75rem;color:#544864;font-weight:700}
+.brief-list{list-style:none;padding:0}
+.brief-list li{border-bottom:1px solid #e6deed;padding:.6rem 0;display:grid;gap:.2rem}
+.product-memo{max-width:800px;margin:auto}
+@media(max-width:600px){.modes .btn{flex:1;min-width:138px}.outcome-actions{flex-wrap:wrap}.ai-inline{margin:0 10px 12px}.criterion-group{padding:8px}}
+.manual-metrics{margin-top:0;margin-bottom:12px}
+.review-brief{margin-top:8px}
+
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to workspace</a>
+  <div id="app"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="modal" aria-labelledby="modal-title"></dialog>
+  <noscript>This demo needs JavaScript to show the fictional cases and save review actions.</noscript>
+  <script>
+(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  root.TrialDesk = api;
+})(globalThis, function () {
+  'use strict';
+  const STATUSES = ['Not reviewed', 'Met', 'Not met', 'Insufficient information', 'Conflicting evidence'];
+  const EXCLUSION_STATUSES = ['Exclusion ruled out', 'Exclusion present'];
+  const ERROR_TAGS = ['Outdated note', 'Wrong tumor context', 'Citation mismatch', 'Boolean rule error', 'Other'];
+  const DISPOSITIONS = ['Enrolled', 'Ineligible', 'Patient declined', 'Provider decision', 'Operational barrier'];
+  const WORKFLOWS = ['Not started', 'In review', 'Follow up needed', 'Ready for clinical review', 'Review complete'];
+  const PEOPLE = ['Coordinator A', 'Coordinator B', 'Clinical Lead A'];
+  const START = '2026-11-18T08:30:00+05:30';
+  const PROTOCOLS = {
+    lung: { id: 'DEMO LUNG 01', version: 'v1', type: 'Lung', marker: 'DemoMarker A', prefix: 'L', checks: ['Lung cancer documented', 'DemoMarker A detected', 'Prior treatment documented'] },
+    breast: { id: 'DEMO BREAST 01', version: 'v1', type: 'Breast', marker: 'DemoMarker B', prefix: 'B', checks: ['Breast cancer documented', 'DemoMarker B detected', 'Prior treatment documented'] }
+  };
+  const clone = x => JSON.parse(JSON.stringify(x));
+  const iso = text => new Date(text).toISOString();
+  const stamp = time => iso('2026-11-18T' + time + ':00+05:30');
+  const assert = (test, message) => { if (!test) throw new Error(message); };
+  const text = (value, label, max = 1200) => {
+    assert(typeof value === 'string' && value.trim().length > 0, label + ' is required.');
+    assert(value.trim().length <= max, label + ' is too long.');
+    return value.trim();
+  };
+  const actor = value => { assert(PEOPLE.includes(value), 'Choose a reviewer.'); return value; };
+  function source(id, date, title, body) { return { id, date: date + 'T09:00:00+05:30', title, body }; }
+  function seedEvent(c, time, kind, detail, reviewer = c.owner, extra = {}) {
+    c.events.push({ id: c.id + '-seed-' + (c.events.length + 1), at: stamp(time), kind, detail, reviewer, seeded: true, ...extra });
+  }
+  function makeCase(id, patient, protocol, visit, owner, statuses, mode = '') {
+    const pr = PROTOCOLS[protocol];
+    const tag = id === 'C001' ? 'A' : id === 'C002' ? 'B' : id;
+    const c = { id, patient, protocol, owner, visit: stamp(visit), checks: [], tasks: [], events: [], firstActionAt: null, completedAt: null, handoffAt: null, outcome: 'Unresolved', outcomeReason: '', updates: [] };
+    const diagnosis = mode === 'wrong-type' ? 'lung cancer' : pr.type.toLowerCase() + ' cancer';
+    const notes = [
+      [source('DOC ' + tag + '1', '2026-11-10', 'Pathology summary', 'Fictional pathology summary records ' + diagnosis + '.')],
+      [source('DOC ' + tag + '2', '2026-11-12', 'Marker report', pr.marker + (mode === 'negative' ? ' not detected.' : ' detected.'))],
+      [source('DOC ' + tag + '3', '2026-11-13', 'Treatment history', 'Fictional history records one prior treatment course.')]
+    ];
+    if (mode === 'missing-marker') notes[1] = [source('DOC ' + tag + '2', '2026-11-12', 'Test request', pr.marker + ' test ordered; result pending. No result report is available.')];
+    if (mode === 'conflict') {
+      notes[1].push(source('DOC ' + tag + '3', '2026-11-13', 'Consultation summary', 'Summary note says ' + pr.marker + ' not detected.'));
+      notes[2] = [source('DOC ' + tag + '4', '2026-11-14', 'Treatment history', 'Fictional history records one prior treatment course.')];
+    }
+    if (mode === 'missing-history') notes[2] = [];
+    c.checks = pr.checks.map((title, i) => ({ id: pr.prefix + (i + 1), title, status: statuses[i], sources: notes[i], reviewer: statuses[i] === 'Not reviewed' ? '' : owner, reason: statuses[i] === 'Not reviewed' ? '' : 'Authored starting assessment for this fictional scenario.', updatedAt: statuses[i] === 'Not reviewed' ? null : stamp('08:00') }));
+    const started = statuses.some(s => s !== 'Not reviewed');
+    const exclusion = { id: 'E1', kind: 'exclusion', title: 'Prior participation in this fictional study', sources: [
+      source('DOC ' + tag + 'E1', '2026-11-14', 'Fictional study register',
+        id === 'C005' ? 'Prior participation in this study is documented.' : 'The study register confirms no prior participation.')
+    ] };
+    if (protocol === 'lung') {
+      const performanceSources = [
+        source('DOC ' + tag + 'P1', id === 'C007' ? '2026-10-12' : '2026-11-16', 'Performance status note',
+          id === 'C007' ? 'ECOG performance status 2 was recorded at the earlier visit.' : 'ECOG performance status 1 is documented at the current assessment.')
+      ];
+      if (id === 'C007') performanceSources.push(source('DOC C007P2', '2026-11-17', 'Updated performance status', 'ECOG performance status 1 is documented at the current assessment.'));
+      c.checks.push(startingCheck({id:'L4', title:'Current performance status meets fictional protocol', sources:performanceSources}, !started || id === 'C007' ? 'Not reviewed' : 'Met', owner));
+    }
+    c.checks.push(startingCheck(exclusion, !started ? 'Not reviewed' : id === 'C005' ? 'Exclusion present' : 'Exclusion ruled out', owner));
+    if (started) {
+      c.firstActionAt = stamp('08:00');
+      for (const ch of c.checks.filter(x => x.status !== 'Not reviewed')) seedEvent(c, '08:00', 'Assessment saved', ch.id + ': ' + ch.status, owner, { checkId: ch.id, oldValue: 'Not reviewed', newValue: ch.status, reason: ch.reason });
+    }
+    return c;
+  }
+  function startingCheck(check, status, owner) {
+    return { ...check, status, reviewer: status === 'Not reviewed' ? '' : owner,
+      reason: status === 'Not reviewed' ? '' : 'Authored starting assessment for this fictional scenario.',
+      updatedAt: status === 'Not reviewed' ? null : stamp('08:00') };
+  }
+  function createSeed(realTime = Date.now()) {
+    const cases = [
+      makeCase('C001', 'DEMO 001', 'lung', '10:00', 'Coordinator A', ['Met', 'Insufficient information', 'Met'], 'missing-marker'),
+      makeCase('C002', 'DEMO 002', 'breast', '11:00', 'Coordinator B', ['Met', 'Conflicting evidence', 'Met'], 'conflict'),
+      makeCase('C003', 'DEMO 003', 'lung', '11:30', 'Coordinator A', ['Not reviewed', 'Not reviewed', 'Not reviewed']),
+      makeCase('C004', 'DEMO 004', 'breast', '12:00', 'Coordinator B', ['Met', 'Met', 'Met']),
+      makeCase('C005', 'DEMO 005', 'lung', '12:30', 'Coordinator A', ['Met', 'Met', 'Met']),
+      makeCase('C006', 'DEMO 006', 'breast', '13:00', 'Coordinator B', ['Met', 'Met', 'Met']),
+      makeCase('C007', 'DEMO 007', 'lung', '13:30', 'Coordinator B', ['Met', 'Met', 'Met']),
+      makeCase('C008', 'DEMO 008', 'breast', '14:00', 'Coordinator B', ['Met', 'Insufficient information', 'Not reviewed'], 'missing-marker'),
+      makeCase('C009', 'DEMO 003', 'breast', '11:30', 'Coordinator A', ['Not met', 'Met', 'Met'], 'wrong-type'),
+      makeCase('C010', 'DEMO 009', 'lung', '15:00', 'Coordinator A', ['Met', 'Met', 'Insufficient information'], 'missing-history')
+    ];
+    const byId = id => cases.find(x => x.id === id);
+    const tasks = [
+      ['C001', 'L2', 'Obtain the missing marker result', 'Coordinator A', '09:00'],
+      ['C002', 'B2', 'Clarify disagreement between the report and note', 'Clinical Lead A', '09:30'],
+      ['C008', 'B2', 'Follow up on the pending marker report', 'Coordinator B', '08:00'],
+      ['C010', 'L3', 'Obtain the missing treatment history', 'Coordinator A', '09:15']
+    ];
+    for (const [id, checkId, issue, owner, due] of tasks) {
+      const c = byId(id);
+      c.tasks.push({ id: id + '-task-seed', checkId, issue, owner, dueAt: stamp(due), createdAt: stamp('08:05'), resolvedAt: null, resolution: '' });
+      seedEvent(c, '08:05', 'Follow-up assigned', issue + ' · ' + owner, c.owner, { checkId, reason: 'Authored follow-up task for the fictional scenario.' });
+    }
+    const ready = byId('C004'); ready.handoffAt = stamp('08:15'); ready.outcome = 'Potential fit for clinical review'; ready.outcomeReason = 'All three fictional checks were reviewed; no open follow-up tasks.';
+    seedEvent(ready, '08:15', 'Clinical handoff saved', ready.outcomeReason);
+    const negatives = byId('C005'); const complete = byId('C006');
+    for (const [c, first, finished, outcome, why] of [
+      [negatives, '06:10', '07:04', 'Not supported on current evidence', 'Prior participation is an explicit exclusion in this fictional protocol.'],
+      [complete, '06:00', '07:22', 'Potential fit for clinical review', 'All fictional checks are Met; coordinator review is complete.']
+    ]) {
+      c.events = []; c.firstActionAt = stamp(first); c.completedAt = stamp(finished); c.outcome = outcome; c.outcomeReason = why;
+      for (const ch of c.checks) { ch.updatedAt = stamp(first); seedEvent(c, first, 'Assessment saved', ch.id + ': ' + ch.status, c.owner, { checkId: ch.id, oldValue: 'Not reviewed', newValue: ch.status, reason: ch.reason }); }
+      seedEvent(c, finished, 'Coordinator review completed', why);
+    }
+    byId('C001').recheck = {checkId:'L2', label:'New fictional biomarker report', update:'marker-update'};
+    negatives.disposition = { outcome:'Ineligible', verified:'no', at:stamp('07:04'), reviewer:negatives.owner, reason:'Fictional prior participation exclusion.' };
+    seedEvent(negatives, '07:04', 'Disposition recorded', 'Ineligible', negatives.owner, {reason:negatives.disposition.reason});
+    return { schema: 2, clock: { anchor: iso(START), startedAt: realTime }, cases };
+  }
+  function scenarioNow(state, realTime = Date.now()) {
+    return new Date(new Date(state.clock.anchor).getTime() + Math.max(0, realTime - state.clock.startedAt)).toISOString();
+  }
+  function isState(state) {
+    try {
+      if (state?.schema !== 2 || !Number.isFinite(state.clock.startedAt) || !Number.isFinite(Date.parse(state.clock.anchor)) || !Array.isArray(state.cases) || state.cases.length !== 10) return false;
+      const expected = createSeed(0).cases;
+      return state.cases.every((c, index) => c.id === expected[index].id && c.patient === expected[index].patient && c.protocol === expected[index].protocol && PEOPLE.includes(c.owner) && Number.isFinite(Date.parse(c.visit)) && Array.isArray(c.checks) && c.checks.length === expected[index].checks.length && c.checks.every((ch, i) => ch.id === expected[index].checks[i].id && typeof ch.title === 'string' && allStatuses(ch).includes(ch.status) && Array.isArray(ch.sources) && ch.sources.every(s => typeof s.id === 'string' && typeof s.body === 'string' && typeof s.title === 'string' && Number.isFinite(Date.parse(s.date)))) && Array.isArray(c.tasks) && c.tasks.every(t => typeof t.id === 'string' && typeof t.issue === 'string' && PEOPLE.includes(t.owner) && c.checks.some(ch => ch.id === t.checkId) && Number.isFinite(Date.parse(t.dueAt))) && Array.isArray(c.events) && c.events.every(e => typeof e.id === 'string' && typeof e.kind === 'string' && typeof e.detail === 'string' && typeof e.reviewer === 'string' && Number.isFinite(Date.parse(e.at))) && Array.isArray(c.updates));
+    } catch { return false; }
+  }
+  function allStatuses(check) {
+    return check.kind === 'exclusion' ? [STATUSES[0], ...EXCLUSION_STATUSES, ...STATUSES.slice(3)] : STATUSES;
+  }
+  const passes = ch => ch.status === (ch.kind === 'exclusion' ? 'Exclusion ruled out' : 'Met');
+  const disqualifies = ch => ch.status === (ch.kind === 'exclusion' ? 'Exclusion present' : 'Not met');
+  const negativeOutcome = c => c.checks.some(disqualifies);
+  function openTasks(c) { return c.tasks.filter(t => !t.resolvedAt); }
+  function blockingChecks(c) { return c.checks.filter(ch => ['Not reviewed', 'Insufficient information', 'Conflicting evidence'].includes(ch.status)); }
+  function handoffReasons(c) {
+    const reasons = [];
+    const unmet = c.checks.filter(ch => !passes(ch)).length;
+    if (unmet) reasons.push(unmet + ' check' + (unmet === 1 ? ' is' : 's are') + ' unresolved or blocking');
+    const tasks = openTasks(c).length;
+    if (tasks) reasons.push(tasks + ' follow-up task' + (tasks === 1 ? ' is' : 's are') + ' open');
+    return reasons;
+  }
+  const canHandoff = c => handoffReasons(c).length === 0;
+  const canComplete = c => blockingChecks(c).length === 0 && openTasks(c).length === 0;
+  function workflow(c) {
+    if (c.completedAt) return 'Review complete';
+    if (c.handoffAt && canHandoff(c)) return 'Ready for clinical review';
+    if (openTasks(c).length || c.checks.some(ch => ['Insufficient information', 'Conflicting evidence'].includes(ch.status))) return 'Follow up needed';
+    if (c.firstActionAt || c.checks.some(ch => ch.status !== 'Not reviewed')) return 'In review';
+    return 'Not started';
+  }
+  function unresolved(c) { return openTasks(c).length > 0 || c.checks.some(ch => ['Insufficient information', 'Conflicting evidence'].includes(ch.status)); }
+  function selectCases(state, filters = {}) {
+    const query = (filters.search || '').trim().toLowerCase();
+    return state.cases.filter(c => (!filters.protocol || c.protocol === filters.protocol) && (!filters.owner || c.owner === filters.owner) && (!filters.status || workflow(c) === filters.status) && (!query || [c.id, c.patient, PROTOCOLS[c.protocol].id, c.owner].some(v => v.toLowerCase().includes(query)))).sort((a,b) => Date.parse(a.visit) - Date.parse(b.visit) || a.id.localeCompare(b.id));
+  }
+  function median(values) {
+    if (!values.length) return null;
+    const sorted = values.slice().sort((a,b) => a-b); const mid = Math.floor(sorted.length / 2);
+    return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  }
+  function metrics(cases, now) {
+    const done = cases.filter(c => c.completedAt);
+    const tasks = cases.flatMap(c => openTasks(c));
+    const durations = done.filter(c => c.firstActionAt && Date.parse(c.completedAt) >= Date.parse(c.firstActionAt)).map(c => (Date.parse(c.completedAt) - Date.parse(c.firstActionAt)) / 60000);
+    return { total: cases.length, patients: new Set(cases.map(c => c.patient)).size, reviewed: cases.filter(c => c.checks.some(ch => ch.status !== 'Not reviewed')).length, completed: done.length, unresolved: cases.filter(unresolved).length, tasks: tasks.length, overdue: tasks.filter(t => Date.parse(t.dueAt) < Date.parse(now)).length, turnaround: median(durations), samples: durations.length, byStatus: Object.fromEntries(WORKFLOWS.map(s => [s, cases.filter(c => workflow(c) === s).length])) };
+  }
+  function record(state, c, at, reviewer, kind, detail, fields = {}) {
+    assert(Number.isFinite(Date.parse(at)), 'A valid event time is required.');
+    if (!c.firstActionAt) c.firstActionAt = at;
+    c.events.push({ id: c.id + '-event-' + (c.events.length + 1) + '-' + Date.parse(at), at, reviewer, kind, detail, seeded: false, ...fields });
+  }
+  function invalidate(state, c, at, reviewer, reason) {
+    assert(c.disposition?.outcome !== 'Enrolled', 'This fictional match has a recorded enrollment. Its review history is closed.');
+    const previous = { workflow: workflow(c), outcome: c.outcome, reason: c.outcomeReason, disposition: c.disposition ?? null, completedAt: c.completedAt, handoffAt: c.handoffAt };
+    c.completedAt = null; c.handoffAt = null; c.outcome = 'Unresolved'; c.outcomeReason = ''; c.disposition = null;
+    if (previous.completedAt || previous.handoffAt || previous.disposition) record(state, c, at, reviewer, 'Review reopened', reason, { previous });
+  }
+  function getCase(state, caseId) { const c = state.cases.find(x => x.id === caseId); assert(c, 'The case could not be found.'); return c; }
+  function getCheck(c, checkId) { const check = c.checks.find(x => x.id === checkId); assert(check, 'Choose a valid check.'); return check; }
+  function assess(state, data, at) {
+    const reviewer = actor(data.reviewer), reason = text(data.reason, 'Assessment reason');
+    const c = getCase(state, data.caseId), ch = getCheck(c, data.checkId);
+    assert(allStatuses(ch).slice(1).includes(data.status), 'Choose an assessment for this criterion.');
+    assert(allStatuses(ch).slice(3).includes(data.status) || ch.sources.length > 0, 'A definitive assessment needs source evidence.');
+    if (data.sourceId) assert(ch.sources.some(item => item.id === data.sourceId), 'Choose evidence from this criterion.');
+    const oldValue = ch.status;
+    invalidate(state, c, at, reviewer, 'A check assessment changed. Previous outcome retained in history.');
+    Object.assign(ch, { status: data.status, reason, reviewer, sourceId: data.sourceId || null, updatedAt: at });
+    record(state, c, at, reviewer, 'Assessment saved', ch.id + ': ' + oldValue + ' → ' + ch.status, { checkId: ch.id, oldValue, newValue: ch.status, sourceId: ch.sourceId, reason });
+  }
+  function addTask(state, data, at) {
+    const reviewer = actor(data.reviewer), issue = text(data.issue, 'Follow-up issue'), owner = actor(data.owner);
+    assert(Number.isFinite(Date.parse(data.dueAt)), 'Choose a due date and time.');
+    const c = getCase(state, data.caseId); getCheck(c, data.checkId);
+    invalidate(state, c, at, reviewer, 'A follow-up task was added.');
+    const task = { id: c.id + '-task-' + (c.tasks.length + 1), checkId: data.checkId, issue, owner, dueAt: iso(data.dueAt), createdAt: at, resolvedAt: null, resolution: '' };
+    c.tasks.push(task);
+    record(state, c, at, reviewer, 'Follow-up assigned', issue + ' · ' + owner, { checkId: data.checkId, taskId: task.id, dueAt: task.dueAt, reason: issue });
+  }
+  function resolveTask(state, data, at) {
+    const reviewer = actor(data.reviewer), reason = text(data.reason, 'Resolution note');
+    const c = getCase(state, data.caseId), t = c.tasks.find(t => t.id === data.taskId);
+    assert(t && !t.resolvedAt, 'This task is already resolved or unavailable.');
+    t.resolvedAt = at; t.resolution = reason;
+    record(state, c, at, reviewer, 'Follow-up resolved', t.issue, { checkId: t.checkId, taskId: t.id, reason });
+  }
+  function handoff(state, data, at) {
+    const reviewer = actor(data.reviewer), reason = text(data.reason, 'Handoff reason'), c = getCase(state, data.caseId);
+    assert(canHandoff(c), 'Handoff blocked: ' + handoffReasons(c).join('; ') + '.');
+    assert(!c.completedAt, 'Reopen or change the review before saving another handoff.');
+    c.handoffAt = at; c.outcome = 'Potential fit for clinical review'; c.outcomeReason = reason;
+    record(state, c, at, reviewer, 'Clinical handoff saved', 'Potential fit for clinical review. ' + reason, { reason });
+  }
+  function complete(state, data, at) {
+    const reviewer = actor(data.reviewer), reason = text(data.reason, 'Completion reason'), c = getCase(state, data.caseId);
+    assert(canComplete(c), 'Review cannot be completed while checks or follow-up tasks are unresolved.');
+    assert(!c.completedAt, 'This coordinator review is already complete.');
+    const expected = negativeOutcome(c) ? 'Not supported on current evidence' : 'Potential fit for clinical review';
+    assert(data.outcome === expected, 'Choose the outcome that matches the recorded assessments.');
+    if (negativeOutcome(c)) {
+      assert(data.disposition === 'Ineligible', 'Record the structured Ineligible disposition to close this review.');
+      saveDisposition(c, data.disposition, 'no', reviewer, reason, at);
+    }
+    c.completedAt = at; c.outcome = data.outcome; c.outcomeReason = reason;
+    record(state, c, at, reviewer, 'Coordinator review completed', c.outcome + '. ' + reason, { reason, outcome: c.outcome });
+  }
+  function addDemoEvidence(state, data, at) {
+    const reviewer = actor(data.reviewer), c = getCase(state, data.caseId);
+    assert(['C001', 'C006'].includes(c.id), 'This case has no staged update.');
+    assert(!c.updates.includes('marker-update'), 'The fictional update has already been added.');
+    const ch = c.checks[1]; const oldValue = ch.status;
+    invalidate(state, c, at, reviewer, 'New fictional marker evidence arrived. The previous outcome needs review.');
+    const item = c.id === 'C001' ? source('DOC A4', '2026-11-17', 'New marker result', 'DemoMarker A detected. This is the fictional result that was previously pending.') : source('DOC C0065', '2026-11-18', 'New clarification note', 'New fictional summary records DemoMarker B not detected. It disagrees with the earlier marker report. A reviewer must clarify the discrepancy.');
+    if (c.id === 'C006') item.date = at;
+    ch.sources.push(item); ch.status = 'Not reviewed'; ch.reviewer = ''; ch.reason = ''; ch.updatedAt = null;
+    c.updates.push('marker-update');
+    record(state, c, at, reviewer, 'Fictional evidence added', item.id + ' added. ' + ch.id + ' needs a fresh assessment.', { checkId: ch.id, oldValue, newValue: 'Not reviewed', sourceId: item.id, reason: 'Staged demonstration update; original sources retained.' });
+  }
+  function saveDisposition(c, outcome, verified, reviewer, reason, at) {
+    const previous = c.disposition || null;
+    c.disposition = {outcome, verified, reviewer, reason, at};
+    record(null, c, at, reviewer, 'Disposition recorded', outcome, {reason, priorDisposition: previous?.outcome});
+  }
+  function disposition(state, data, at) {
+    const c = getCase(state, data.caseId);
+    const reviewer = actor(data.reviewer);
+    assert(c.handoffAt || c.completedAt, 'Save a handoff or complete the review first.');
+    assert(!c.disposition, 'This match already has a recorded disposition.');
+    assert(DISPOSITIONS.includes(data.outcome), 'Choose a disposition reason.');
+    assert(['yes','no','unknown'].includes(data.verified), 'Choose the verification status.');
+    assert(data.outcome !== 'Enrolled' || (data.verified === 'yes' && canHandoff(c)), 'Enrollment needs verified eligibility and a cleared review.');
+    assert(data.outcome !== 'Ineligible' || data.verified === 'no', 'An ineligible disposition requires a negative verification status.');
+    assert(!negativeOutcome(c) || data.outcome === 'Ineligible', 'The confirmed exclusion or unmet inclusion must be recorded as Ineligible.');
+    saveDisposition(c, data.outcome, data.verified, reviewer, data.reason?.trim().slice(0,1200) || data.outcome, at);
+  }
+  function watchlist(cases) {
+    return cases.flatMap(c => {
+      const outstanding = c.checks.filter(ch => !passes(ch));
+      const check = c.checks.find(ch => ch.id === c.recheck?.checkId);
+      if (!check || c.completedAt || c.disposition || outstanding.length !== 1 || outstanding[0] !== check) return [];
+      const arrived = c.updates.includes(c.recheck.update);
+      if ((!arrived && check.status !== 'Insufficient information') || (arrived && check.status !== 'Not reviewed')) return [];
+      const task = openTasks(c).find(t => t.checkId === check.id);
+      return [{case:c, check, arrived, trigger:c.recheck.label, owner:task?.owner || c.owner, due:task?.dueAt || c.visit}];
+    });
+  }
+
+  // Frozen authored predictions and independent reference labels. A positive
+  // label means that one check blocks progression or needs clarification.
+  const EVAL = Object.freeze([
+    ['C001','L2','Insufficient information','DOC A2','DOC A2',true,'test ordered'],
+    ['C002','B2','Met','DOC B2',null,true,'DemoMarker B detected.'],
+    ['C004','B1','Met','DOC C0041','DOC C0041',false,'records breast cancer.'],
+    ['C005','E1','Exclusion present','DOC C005E1','DOC C005E1',true,'Prior participation in this study is documented.'],
+    ['C007','L4','Not met','DOC C007P1','DOC C007P2',false,'ECOG performance status 2'],
+    ['C009','B1','Not met','DOC C0091','DOC C0091',true,'records lung cancer.'],
+    ['C010','L3','Insufficient information',null,null,true,'']
+  ].map(([caseId,checkId,status,sourceId,referenceSource,referenceBlocks,quote]) =>
+    Object.freeze({caseId,checkId,status,sourceId,referenceSource,referenceBlocks,quote})));
+  const prediction = (caseId, checkId) => EVAL.find(row => row.caseId === caseId && row.checkId === checkId);
+  function evaluation(state) {
+    const rows = EVAL;
+    const predictedBlocks = row => !['Met','Exclusion ruled out'].includes(row.status);
+    const tp = rows.filter(row => row.referenceBlocks && predictedBlocks(row)).length;
+    const fp = rows.filter(row => !row.referenceBlocks && predictedBlocks(row)).length;
+    const fn = rows.filter(row => row.referenceBlocks && !predictedBlocks(row)).length;
+    const cited = rows.filter(row => row.sourceId);
+    const correct = cited.filter(row => {
+      const check = getCheck(getCase(state,row.caseId),row.checkId);
+      return row.sourceId === row.referenceSource && check.sources.some(source => source.id === row.sourceId && source.body.includes(row.quote));
+    }).length;
+    const feedback = state.cases.flatMap(c => c.events.slice().reverse().filter(e => e.kind === 'AI suggestion reviewed').map(e => ({caseId:c.id, ...e})))
+      .sort((a,b) => Date.parse(b.at)-Date.parse(a.at));
+    return {tp,fp,fn,correct,cited:cited.length,total:rows.length,rows,feedback};
+  }
+  function reviewActivity(feedback) {
+    const reviewed = new Set();
+    const overridden = new Set();
+    let overrideActions = 0;
+    for (const action of feedback) {
+      const key = action.caseId + '/' + action.checkId;
+      reviewed.add(key);
+      if (action.tag) {
+        overridden.add(key);
+        overrideActions++;
+      }
+    }
+    return {reviewed:reviewed.size, overridden:overridden.size, overrideActions};
+  }
+  function reviewPrediction(state, data, at) {
+    const c = getCase(state,data.caseId);
+    const check = getCheck(c,data.checkId);
+    const original = prediction(c.id,check.id);
+    assert(original, 'This check has no simulated suggestion.');
+    assert(['keep','override'].includes(data.decision), 'Choose Keep or Override.');
+    if (data.decision === 'override') {
+      assert(ERROR_TAGS.includes(data.tag), 'Choose an error tag.');
+      assert(data.sourceId || !check.sources.length, 'Select the evidence that supports the correction.');
+      assert(data.status !== original.status || data.sourceId !== original.sourceId, 'Change the assessment or its evidence citation.');
+    }
+    const input = data.decision === 'keep' ? {...data,status:original.status,sourceId:original.sourceId,reason:data.reason || 'Reviewed and kept the simulated suggestion.'} : data;
+    assess(state,input,at);
+    record(state,c,at,data.reviewer,'AI suggestion reviewed',data.decision === 'keep' ? 'Kept simulated suggestion' : 'Overrode simulated suggestion', {
+      checkId:check.id, reason:check.reason, tag:data.decision === 'override' ? data.tag : null,
+      originalStatus:original.status, originalSource:original.sourceId, correctedStatus:check.status, correctedSource:check.sourceId
+    });
+  }
+  function bottlenecks(cases) {
+    const reviewed = cases.filter(c => c.completedAt && c.checks.every(ch => passes(ch) || disqualifies(ch)));
+    const counts = new Map();
+    for (const c of reviewed) {
+      const blockers = c.checks.filter(disqualifies);
+      for (const ch of blockers) {
+        const id = c.protocol + '/' + ch.id;
+        const row = counts.get(id) || {criterion:ch.title, protocol:PROTOCOLS[c.protocol].id,
+          total:reviewed.filter(r => r.protocol === c.protocol).length, blocked:0, sole:0};
+        row.blocked++;
+        if (blockers.length === 1) row.sole++;
+        counts.set(id,row);
+      }
+    }
+    return [...counts.values()].sort((a,b) => b.sole-a.sole || b.blocked-a.blocked);
+  }
+  function visitBrief(c) {
+    const reviewed = c.checks.filter(passes);
+    const blocker = c.checks.find(ch => !passes(ch));
+    const task = openTasks(c)[0];
+    const best = reviewed.find(ch => ch.sourceId) || reviewed.find(ch => ch.id.endsWith('2')) || reviewed[0];
+    const sourceId = best?.sourceId || best?.sources[0]?.id;
+    const source = best?.sources.find(item => item.id === sourceId);
+    return {protocol:PROTOCOLS[c.protocol].id, checkId:best?.id, evidence:source ? best.title + ' · ' + source.body : 'Reviewed evidence pending',
+      source, remaining:blocker?.title || task?.issue || 'No open protocol check or follow-up in this demo.',
+      next:negativeOutcome(c) ? 'Review the documented blocker before discussing this trial.' : blocker || task ? 'Review the remaining question with the named coordinator.' : 'Discuss this potential match with the qualified study team.'};
+  }
+  return { EXCLUSION_STATUSES, ERROR_TAGS, DISPOSITIONS, allStatuses, passes, negativeOutcome, disposition, watchlist, evaluation, reviewActivity, prediction, reviewPrediction, bottlenecks, visitBrief, STATUSES, WORKFLOWS, PEOPLE, PROTOCOLS, START, clone, createSeed, scenarioNow, isState, openTasks, blockingChecks, canHandoff, canComplete, handoffReasons, workflow, unresolved, selectCases, metrics, median, getCase, assess, addTask, resolveTask, handoff, complete, addDemoEvidence };
+});
+
+(function () {
+  'use strict';
+  const M = window.TrialDesk;
+  const KEY = 'trial-review-desk-v2';
+  const app = document.getElementById('app');
+  const modal = document.getElementById('modal');
+  let state, storageOK = true, recovery = false, toastTimer;
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) { const parsed = JSON.parse(saved); if (M.isState(parsed)) state = parsed; else recovery = true; }
+  } catch { storageOK = false; }
+  if (!state) state = M.createSeed();
+  const ui = { page: 'queue', caseId: 'C001', checkId: 'L2', tab: 'evidence', actor: 'Coordinator A', filters: { search: '', protocol: '', owner: '', status: '' }, taskFilter: 'open' };
+  const h = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const iconPaths = {
+    mark: '<path d="M5 3v4c0 4 14 6 14 10v4M19 3v4C19 11 5 13 5 17v4M6 5h12M6 19h12M8 9h8M8 15h8"/>',
+    queue: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 4v16M9 10h11M4 10h5M9 15h11"/>',
+    tasks: '<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 3h6v4H9zM9 12l2 2 4-4M9 18h6"/>',
+    chart: '<path d="M4 4v16h17M8 15v-4M13 15V7M18 15v-7"/>',
+    book: '<path d="M12 5v15M12 5C9 3 5 3 3 4v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-2-1-6-1-9 1z"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    back: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+    chevron: '<path d="m9 5 7 7-7 7"/>',
+    reset: '<path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
+    circlecheck: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
+    patient: '<circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/>',
+    file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5"/>',
+    alert: '<path d="m12 3 10 18H2zM12 9v5M12 18h.01"/>',
+    split: '<path d="M8 20V9a4 4 0 0 1 4-4h7M15 1l4 4-4 4M8 13h4a4 4 0 0 1 4 4v3M4 17l4 4 4-4"/>',
+    x: '<path d="m6 6 12 12M18 6 6 18"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    shield: '<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h3"/>',
+    dots: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+    save: '<path d="M5 3h12l4 4v14H3V3zM7 3v6h10V3M7 21v-8h10v8"/>',
+    flag: '<path d="M5 21V3c5-3 9 4 14 1v10c-5 3-9-4-14-1"/>'
+  };
+  const icon = name => '<svg viewBox="0 0 24 24" aria-hidden="true">' + (iconPaths[name] || iconPaths.info) + '</svg>';
+  const now = () => M.scenarioNow(state);
+  function format(iso, options = {}) { return new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false, ...options }).format(new Date(iso)); }
+  function dateOnly(iso) { return new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(iso)); }
+  function timeOnly(iso) { return new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(iso)); }
+  const pct = (n,d) => d ? Math.round(n/d*100) + '%' : 'No data';
+  const shortOutcome = value => value === 'Potential fit for clinical review' ? 'Potential fit · clinical review required' : value;
+  const initial = person => person === 'Clinical Lead A' ? 'CL' : person === 'Coordinator B' ? 'CB' : 'CA';
+  function statusClass(status) { return ({'Met':'green','Not met':'red','Exclusion ruled out':'green','Exclusion present':'red','Insufficient information':'amber','Conflicting evidence':'red','Not reviewed':'gray','Not started':'gray','In review':'purple','Follow up needed':'amber','Ready for clinical review':'blue','Review complete':'green','Unresolved':'amber'})[status] || 'purple'; }
+  function badge(label, type) { const name = ['Met','Review complete'].includes(label) ? 'check' : ['Follow up needed','Insufficient information','Unresolved'].includes(label) ? 'clock' : label === 'Conflicting evidence' ? 'split' : ''; return `<span class="badge ${h(type || statusClass(label))}">${name ? icon(name) : ''}${h(label)}</span>`; }
+  function options(values, selected, empty) { return (empty !== undefined ? `<option value="">${h(empty)}</option>` : '') + values.map(v => { const [value,label] = Array.isArray(v) ? v : [v,v]; return `<option value="${h(value)}" ${value === selected ? 'selected' : ''}>${h(label)}</option>`; }).join(''); }
+  function reviewerField(id = 'reviewer') { return `<div class="form-field"><label for="${id}">Reviewer <span class="muted">· simulated role</span></label><select id="${id}" name="reviewer" required>${options(M.PEOPLE,ui.actor,'Choose reviewer')}</select></div>`; }
+  function footer() { return `<footer class="footer"><span>${icon('shield')}Fictional records. Independent portfolio project by Akshata Anil Urs.</span><span>${icon(storageOK ? 'save' : 'info')}${storageOK ? 'Changes saved in this browser' : 'Session only · saving unavailable'}</span></footer>`; }
+  function navButton(page, label, image, count = null, extra = '') { return `<button data-action="nav" data-page="${page}" class="${ui.page === page || (page === 'queue' && ui.page === 'case') ? 'active ' : ''}${extra}" ${ui.page === page ? 'aria-current="page"' : ''}>${icon(image)}${label}${count !== null ? `<span class="count">${count}</span>` : ''}</button>`; }
+  function filterbar() { return `<div class="filterbar"><div class="search">${icon('search')}<label for="search" class="sr-only" hidden>Search patient or pair</label><input id="search" type="search" placeholder="Search patient or pair…" aria-label="Search patient or pair" value="${h(ui.filters.search)}"></div><div class="filter-field"><label for="protocol-filter">Protocol</label><select id="protocol-filter" data-filter="protocol">${options([['lung','Lung protocol'],['breast','Breast protocol']],ui.filters.protocol,'All protocols')}</select></div><div class="filter-field"><label for="owner-filter">Case owner</label><select id="owner-filter" data-filter="owner">${options(M.PEOPLE.slice(0,2),ui.filters.owner,'All case owners')}</select></div><div class="filter-field"><label for="status-filter">Workflow status</label><select id="status-filter" data-filter="status">${options(M.WORKFLOWS,ui.filters.status,'All statuses')}</select></div>${Object.values(ui.filters).some(Boolean) ? '<button class="btn subtle" data-action="clear-filters">Clear</button>' : ''}</div>`; }
+  function metric(label, value, note, image, color = '') { return `<article class="metric"><div class="metric-label">${label}${icon(image)}</div><div class="metric-value ${color}">${value}</div><div class="metric-note">${note}</div></article>`; }
+  function row(c) {
+    const reviewed = c.checks.filter(ch => ch.status !== 'Not reviewed').length;
+    const missing = c.checks.filter(ch => ch.status === 'Insufficient information').length, conflicting = c.checks.some(ch => ch.status === 'Conflicting evidence');
+    return `<tr><td><button class="pair-button" data-action="open-case" data-id="${c.id}" aria-label="Open ${c.id} ${c.patient}"><span class="patient-symbol">${icon('patient')}</span><span><span class="patient-name">${h(c.patient)}</span><span class="patient-id">${c.id} · fictional patient</span></span></button></td><td><span class="protocol-name">${h(M.PROTOCOLS[c.protocol].id)}</span><span class="protocol-tag">${h(M.PROTOCOLS[c.protocol].version)} · ${c.checks.length} protocol checks</span></td><td><span class="patient-name" style="font-size:11px;font-weight:500">${timeOnly(c.visit)}</span><span class="patient-id">18 Nov · IST</span></td><td>${badge(M.workflow(c))}${conflicting ? `<span class="flag conflict">${icon('split')}Conflicting sources</span>` : missing ? `<span class="flag">${icon('file')}${missing} information gap${missing > 1 ? 's' : ''}</span>` : ''}</td><td><span class="progress-text"><span class="progress-track"><span style="width:${reviewed/c.checks.length*100}%"></span></span>${reviewed}/${c.checks.length}</span></td><td><span class="owner-chip"><span class="owner-mini">${initial(c.owner)}</span>${h(c.owner)}</span></td><td><button class="arrow-button" data-action="open-case" data-id="${c.id}" aria-label="Review ${c.id}">${icon('arrow')}</button></td></tr>`;
+  }
+  function queuePage() {
+    const cases = M.selectCases(state, ui.filters), m = M.metrics(cases, now());
+    return `<div class="page-head"><div><div class="eyebrow">Screening workspace</div><h1>Review queue</h1><p>Review evidence and keep the next step clear.</p></div><div class="head-buttons"><button class="btn" data-action="reset">${icon('reset')}Reset demo</button></div></div>
+    <div class="intro-strip"><div class="intro-text"><span class="intro-icon">${icon('book')}</span><div><strong>New to trial screening? Start with two example cases.</strong><p>Find a missing result, then work through conflicting records.</p></div></div><div class="intro-links"><button class="btn" data-action="open-case" data-id="C001">Missing result ${icon('arrow')}</button><button class="btn" data-action="open-case" data-id="C002">Conflicting records ${icon('arrow')}</button><button class="btn" data-action="nav" data-page="watch">Open watchlist</button></div></div>
+    <div class="metrics-row">${metric('Pairs in this view',m.total,`${m.patients} unique fictional patients`,'patient')}${metric('Reviews complete',`${m.completed}<small>/ ${m.total}</small>`,`${pct(m.completed,m.total)} of the selected queue`,'circlecheck','purple')}${metric('Needs clarification',m.unresolved,'Missing information, conflicts or open tasks','info','amber')}${metric('Open follow-ups',m.tasks,`<span id="overdue-tag">${m.overdue}</span> overdue at the scenario time`,'tasks')}</div>
+    <div class="section-line"><h2>Patient–trial pairs</h2><span class="muted">Ordered by upcoming visit</span></div>
+    <section class="panel" aria-label="Patient and trial review queue">${filterbar()}${cases.length ? `<div class="table-scroll"><table class="data-table"><thead><tr><th>Patient / pair</th><th>Trial protocol</th><th>Visit</th><th>Review status</th><th>Reviewed</th><th>Case owner</th><th><span class="muted">Open</span></th></tr></thead><tbody>${cases.map(row).join('')}</tbody></table></div>` : empty('No pairs match these filters','Try another patient ID or clear the filters.','filters')}<div class="table-footer"><span>Showing ${cases.length} of ${state.cases.length} pairs</span><span>Filters also apply to analytics · fictional data</span></div></section>`;
+  }
+  function empty(title, message, action = '') { return `<div class="empty">${icon('search')}<h3>${h(title)}</h3><p>${h(message)}</p>${action === 'filters' ? '<button class="btn" data-action="clear-filters">Clear filters</button>' : ''}</div>`; }
+  function currentCase() { return M.getCase(state,ui.caseId); }
+  function evidenceView(c) {
+    const ch = c.checks.find(x => x.id === ui.checkId) || c.checks[0]; ui.checkId = ch.id;
+    return `<div class="review-grid"><aside class="panel criteria" aria-label="Protocol checks"><div class="criteria-head"><h2>Protocol checks</h2><span>${c.checks.filter(x => x.status !== 'Not reviewed').length} / ${c.checks.length} reviewed</span></div>${c.checks.map((x,i) => `${i===0 || x.kind==='exclusion' ? '<p class="criterion-group">'+(x.kind==='exclusion'?'Exclusion':'Inclusion')+'</p>' : ''}<button class="criterion ${x.id === ch.id ? 'selected' : ''}" data-action="select-check" data-id="${x.id}" ${x.id === ch.id ? 'aria-current="true"' : ''}><span class="criterion-code">${x.id}</span><span><strong>${h(x.title)}</strong>${badge(x.status)}</span></button>`).join('')}<p class="criteria-note">Fictional rules for this protocol. All applicable checks need review.</p></aside>
+    <div class="evidence-column"><section class="panel"><div class="evidence-head"><div><div class="eyebrow">${ch.id} · Source evidence</div><h2>${h(ch.title)}</h2><p>Inspect the excerpts before recording an assessment.</p></div>${badge(ch.status)}</div><div class="source-list">${ch.sources.length ? ch.sources.map(source => sourceCard(c,ch,source)).join('') : '<div class="no-source"><strong>No source document available</strong><p>The fictional record does not include the information required for this check.</p></div>'}<p class="evidence-note">${icon('info')}Every excerpt is authored simulation data. ${ch.sources.length > 1 ? 'Multiple sources remain visible; a newer date does not resolve a disagreement.' : 'A pending test is not a negative test result.'}</p></div>
+    ${suggestionCard(c,ch)}<form class="assessment" data-form="assessment"><input type="hidden" name="caseId" value="${c.id}"><input type="hidden" name="checkId" value="${ch.id}"><h3>Record your assessment</h3><p>Your assessment applies to this fictional check, not final trial eligibility.</p><div class="form-grid"><div class="form-field"><label for="assessment-status">Assessment</label><select id="assessment-status" name="status" required>${options(M.allStatuses(ch).slice(1),ch.status,'Choose an assessment')}</select></div>${reviewerField('assessment-reviewer')}<div class="form-field wide"><label for="assessment-reason">Evidence and reason</label><textarea id="assessment-reason" name="reason" maxlength="1200" required placeholder="Explain your assessment and reference the source document…"></textarea></div></div><div class="error" id="assessment-error" role="alert"></div><div class="form-actions"><span class="muted">Changes are recorded in decision history.</span><button class="btn primary" type="submit">${icon('check')}Save assessment</button></div></form></section>
+    ${!c.updates.includes('marker-update') && ['C001','C006'].includes(c.id) ? `<div class="snapshot-note" style="margin:15px 0 0">Try a change in evidence: <button class="btn subtle" data-action="demo-evidence" data-id="${c.id}">${icon('plus')}${c.id === 'C001' ? 'Load fictional result' : 'Load conflicting update'}</button></div>` : ''}${outcomePanel(c)}</div></div>`;
+  }
+  function outcomePanel(c) {
+    const reasons = M.handoffReasons(c), done = !!c.completedAt;
+    const remaining = M.blockingChecks(c).length, tasks = M.openTasks(c).length;
+    return `<section class="panel review-outcome"><div class="outcome-head"><div><h2>Coordinator review outcome</h2><p>${done ? 'Completed ' + format(c.completedAt) + ' IST' : c.handoffAt ? 'Handoff saved ' + format(c.handoffAt) + ' IST' : 'Save a handoff or complete the coordinator review when the checks are resolved.'}</p></div>${badge(done ? 'Review complete' : c.outcome === 'Unresolved' ? 'Unresolved' : 'Potential fit for clinical review')}</div>${c.outcome !== 'Unresolved' ? `<p class="outcome-reason"><strong>Recorded outcome:</strong> ${h(shortOutcome(c.outcome))}</p>` : ''}${c.outcomeReason ? `<p class="outcome-reason">${h(c.outcomeReason)}</p>` : ''}<p class="outcome-rules">${icon(done ? 'circlecheck' : 'info')}${done ? 'Coordinator review complete. Clinical eligibility has not been determined by this demo.' : reasons.length ? 'Handoff blocked: ' + h(reasons.join('; ')) + '.' : 'All inclusion checks are met, all exclusions are ruled out, and follow-ups are closed. Handoff is available.'}</p>${c.disposition ? `<p class="outcome-reason"><strong>Disposition</strong> · ${h(c.disposition.outcome)}</p>` : ''}<div class="outcome-actions"><button class="btn" data-action="brief" data-id="${c.id}">Preview visit brief</button>${(c.handoffAt || c.completedAt) && !c.disposition ? `<button class="btn" data-action="disposition" data-id="${c.id}">Record disposition</button>` : ''}<button class="btn" data-action="new-task" data-id="${c.id}">${icon('plus')}Add follow-up</button><button class="btn" data-action="handoff" data-id="${c.id}" ${!M.canHandoff(c) || done ? 'disabled' : ''}>${icon('arrow')}Save clinical handoff</button><button class="btn primary" data-action="complete" data-id="${c.id}" ${!M.canComplete(c) || done ? 'disabled' : ''}>${icon('circlecheck')}Complete review</button></div>${!done && (remaining || tasks) ? `<p class="small muted" style="margin-top:10px;font-size:10px">Completion requires every check assessed, no missing or conflicting evidence, and no open follow-ups.</p>` : ''}</section>`;
+  }
+  function tasksForCase(c) {
+    return `<div class="task-toolbar"><p class="muted small">${c.tasks.length} task${c.tasks.length === 1 ? '' : 's'} · ${M.openTasks(c).length} open</p><button class="btn primary" data-action="new-task" data-id="${c.id}">${icon('plus')}Add follow-up</button></div>${c.tasks.length ? `<div class="task-list">${c.tasks.map(t => taskCard(c,t)).join('')}</div>` : `<section class="panel">${empty('No follow-up tasks','Add a task when a check needs clarification.')}</section>`}${outcomePanel(c)}`;
+  }
+  function taskCard(c,t,global = false) {
+    const overdue = !t.resolvedAt && Date.parse(t.dueAt) < Date.parse(now());
+    return `<article class="panel task-card"><div><div class="pill-row" style="margin-bottom:10px">${badge(t.resolvedAt ? 'Resolved' : overdue ? 'Overdue' : 'Open',t.resolvedAt ? 'green' : 'amber')}<span class="small muted">${h(c.id)} · ${h(t.checkId)}</span></div><h3>${h(t.issue)}</h3><div class="task-meta"><span>Owner: ${h(t.owner)}</span><span>Due ${format(t.dueAt)} IST</span>${global ? `<button data-action="open-case" data-id="${c.id}" class="btn subtle" style="min-height:20px;padding:0;font-size:10px">${h(c.patient)} ${icon('arrow')}</button>` : ''}</div>${t.resolvedAt ? `<p><strong>Resolution:</strong> ${h(t.resolution)}</p><p>Recorded ${format(t.resolvedAt)} IST. The check assessment was not changed automatically.</p>` : ''}</div>${!t.resolvedAt ? `<button class="btn" data-action="resolve-task" data-id="${c.id}" data-task="${h(t.id)}">${icon('check')}Resolve task</button>` : ''}</article>`;
+  }
+  function historyView(c) {
+    return `<p class="snapshot-note">Starting events and their times were authored for the scenario. New actions are labelled “Your demo action”.</p><section class="panel history">${c.events.length ? c.events.slice().reverse().map(e => `<article class="event"><span class="event-mark">${icon(e.kind.includes('reopen') ? 'reset' : e.kind.includes('Follow') ? 'tasks' : e.kind.includes('evidence') ? 'file' : 'check')}</span><div class="event-content"><h3>${h(e.kind)}</h3><p>${h(e.detail)}</p>${e.reason && e.reason !== e.detail ? `<p><strong>Reason:</strong> ${h(e.reason)}</p>` : ''}${e.previous ? `<p><strong>Previous outcome:</strong> ${h(e.previous.outcome)}. ${h(e.previous.reason)}</p>` : ''}<div class="event-meta"><span>${h(e.reviewer)}</span><span>·</span><span>${format(e.at)} IST</span><span>·</span><span>${e.seeded ? 'Authored starting event' : 'Your demo action'}</span></div></div></article>`).join('') : empty('No decisions recorded yet','Save an assessment to begin this review.')}</section><p class="history-note">This browser-local history demonstrates traceability. It is editable local data, not a tamper-resistant clinical audit log.</p>`;
+  }
+  function casePage() {
+    const c = currentCase();
+    return `<button class="back-link" data-action="nav" data-page="queue">${icon('back')}Back to review queue</button><div class="page-head detail-head"><div><div class="eyebrow">${c.id} · ${h(M.PROTOCOLS[c.protocol].id)} ${h(M.PROTOCOLS[c.protocol].version)}</div><h1><span class="patient-symbol">${icon('patient')}</span>${h(c.patient)}</h1><div class="detail-meta"><span>${icon('calendar')}Visit ${format(c.visit)} IST</span><span>${icon('patient')}${h(c.owner)}</span><span>Fictional patient and protocol</span><span>${visitLabel(c)}</span></div></div><div>${badge(M.workflow(c))}</div></div><div class="tabs" role="tablist" aria-label="Case views">${[['evidence','Evidence review',c.checks.length],['tasks','Follow-ups',c.tasks.length],['history','Decision history',c.events.length]].map(([id,label,count]) => `<button role="tab" aria-selected="${ui.tab === id}" class="tab ${ui.tab === id ? 'active' : ''}" data-action="case-tab" data-id="${id}">${label}<small>${count}</small></button>`).join('')}</div><div role="tabpanel" aria-label="${ui.tab === 'evidence' ? 'Evidence review' : ui.tab === 'tasks' ? 'Follow-ups' : 'Decision history'}">${ui.tab === 'tasks' ? tasksForCase(c) : ui.tab === 'history' ? historyView(c) : evidenceView(c)}</div>`;
+  }
+  function tasksPage() {
+    const cases = M.selectCases(state,ui.filters);
+    const tasks = cases.flatMap(c => c.tasks.map(t => ({c,t}))).filter(({t}) => ui.taskFilter === 'all' || (ui.taskFilter === 'open' ? !t.resolvedAt : !!t.resolvedAt)).sort((a,b) => Date.parse(a.t.dueAt) - Date.parse(b.t.dueAt));
+    return `<div class="page-head"><div><div class="eyebrow">Review operations</div><h1>Follow-ups</h1><p>Keep unresolved questions attached to a check and an owner.</p></div></div><section class="panel" style="margin-bottom:22px">${filterbar()}</section><div class="task-toolbar"><div class="segmented" role="group" aria-label="Task filter">${[['open','Open'],['resolved','Resolved'],['all','All tasks']].map(([id,label]) => `<button class="${ui.taskFilter === id ? 'active' : ''}" data-action="task-filter" data-id="${id}" aria-pressed="${ui.taskFilter === id}">${label}</button>`).join('')}</div><p class="muted small">${tasks.length} tasks in the selected queue</p></div>${tasks.length ? `<div class="task-list">${tasks.map(({c,t}) => taskCard(c,t,true)).join('')}</div>` : `<section class="panel">${empty('No tasks in this view','Change the task tab or queue filters.')}</section>`}`;
+  }
+  function analyticsPage() {
+    const cases = M.selectCases(state,ui.filters), m=M.metrics(cases,now());
+    const colors=['#d7d5df','#b3a2d0','#e5bf7b','#92a8ce','#7fbaa5'];
+    return `<div class="page-head"><div><div class="eyebrow">Workflow measures</div><h1>Analytics</h1><p>Operational measures for the fictional queue. No clinical outcomes are measured.</p></div></div><section class="panel">${filterbar()}</section><p class="analytic-filter-note">Denominator: ${m.total} selected patient–trial pairs · ${m.patients} unique patients. One patient may appear against multiple trials.</p><div class="analytics-grid">${metric('Review coverage',pct(m.reviewed,m.total),`${m.reviewed} of ${m.total} pairs have a saved assessment`,'queue','purple')}${metric('Completion rate',pct(m.completed,m.total),`${m.completed} of ${m.total} coordinator reviews complete`,'circlecheck')}${metric('Unresolved share',pct(m.unresolved,m.total),`${m.unresolved} of ${m.total} pairs need clarification`,'info','amber')}${metric('Open follow-ups',m.tasks,`<span id="overdue-tag">${m.overdue}</span> overdue at the scenario time`,'tasks')}${metric('Median turnaround',m.turnaround === null ? '—' : `${Number(m.turnaround.toFixed(1))}<small>min</small>`,m.turnaround === null ? 'No completed reviews in this view' : `Elapsed time · ${m.samples} completed pairs · includes waiting`,'clock','purple')}${metric('Unique patients',m.patients,`${m.total} selected pairs across ${new Set(cases.map(c=>c.protocol)).size} fictional protocols`,'patient')}</div><div class="analysis-row"><section class="panel chart-panel"><h2>Queue progress</h2><p>Current workflow status, counted once per pair.</p><div class="stacked" role="img" aria-label="${h(M.WORKFLOWS.map(s=>s+': '+m.byStatus[s]).join(', '))}">${M.WORKFLOWS.map((s,i)=>`<span style="width:${m.total ? m.byStatus[s]/m.total*100 : 0}%;background:${colors[i]}"></span>`).join('')}</div><div class="legend-list">${M.WORKFLOWS.map((s,i)=>`<div class="legend-item"><span><i class="legend-dot" style="background:${colors[i]}"></i>${s}</span><strong>${m.byStatus[s]}</strong></div>`).join('')}</div></section><section class="panel chart-panel"><h2>Read these measures correctly</h2><ul class="definition-list"><li><strong>Review complete</strong> means a coordinator task is complete. It does not mean the patient can enroll.</li><li><strong>Turnaround</strong> runs from the first saved action to the latest completion. It includes waiting and excludes unfinished pairs.</li><li><strong>Unresolved share</strong> includes missing or conflicting checks and open tasks. A pair is counted once, even with several issues.</li><li><strong>Starting values are authored.</strong> The initial 68-minute median comes from two fictional reviews lasting 54 and 82 minutes. It is not a measured product benefit.</li><li><strong>No baseline study has been run.</strong> No claim of time savings or clinical accuracy is supported by this demonstration.</li></ul></section></div>${bottleneckCard(cases)}`;
+  }
+  function guidePage() {
+    return `<div class="page-head"><div><div class="eyebrow">Independent portfolio project</div><h1>Understand the project</h1><button class="btn" data-action="nav" data-page="memo">Read the product memo</button><p class="guide-intro">Trial Review Desk demonstrates how a coordinator might review a possible patient–trial match, inspect evidence, and track the next step. All protocols, records, marker names and staff roles in this app are fictional.</p></div></div><div class="guide-grid">${[
+      ['01','Find a missing result','A test was ordered, but its result is unavailable. Review C001, load the fictional result, reassess L2 and resolve the task before saving a handoff.','C001','Try the missing-result case'],
+      ['02','Keep a conflict visible','Two fictional documents disagree. In C002, inspect both sources, record why the check remains unresolved and assign a follow-up.','C002','Try the conflict case'],
+      ['03','Correct outdated evidence','Open L4, compare the two ECOG notes, and override the stale suggestion using DOC C007P2.','C007','Try the stale AI suggestion'],
+      ['04','Confirm an exclusion','Inspect E1 and see how prior participation blocked handoff and produced a structured disposition.','C005','Try the confirmed exclusion']
+    ].map(([n,title,body,id,label])=>`<article class="panel scenario-card"><span class="step-number">SCENARIO ${n}</span><h2>${title}</h2><p>${body}</p><button class="btn" data-action="open-case" data-id="${id}" ${id==='C005'?'data-check="E1"':id==='C007'?'data-check="L4"':''} aria-label="${label}">Open ${id} ${icon('arrow')}</button></article>`).join('')}</div><div class="guide-body"><section class="panel guide-section"><h2>What happens in the review?</h2><ol><li><strong>Open a pair.</strong> One row links a fictional patient to one fictional protocol. These protocols have invented inclusion and exclusion checks.</li><li><strong>Compare the evidence.</strong> Read the cited note or report. “Result pending” means information is missing. Conflicting notes remain visible together.</li><li><strong>Save an assessment and reason.</strong> Met, Not met, Insufficient information or Conflicting evidence applies to an individual check.</li><li><strong>Track follow-up.</strong> Assign an issue, owner and deadline. Resolving a task does not automatically change the assessment.</li><li><strong>Record the outcome.</strong> A potential-fit handoff needs all inclusion checks met, all exclusions ruled out, and no open tasks. A coordinator review can also close as Not supported when an inclusion is unmet or an exclusion is present and remaining work is resolved.</li></ol><div class="mini-divider"><h3>Where clinical decisions begin</h3><p>A possible match does not confirm eligibility. The study team conducts the required screening and informed-consent process. Enrollment and treatment decisions are outside this demonstration.</p></div></section><section class="panel guide-section"><h2>The product thinking</h2><p><strong>Problem hypothesis:</strong> when evidence is incomplete or inconsistent, coordinators may need a clearer way to track the question, next action and owner.</p><p class="muted">Public sources establish the domain. Coordinator interviews, workflow observation and clinical-user validation have not been conducted.</p><div class="mini-divider"><h3>About this portfolio project</h3><p>This independent prototype explores a coordinator workflow applicable across oncology research programs. It uses invented protocols and documents.</p></div><div class="mini-divider"><h3>Research to do next</h3><p>Ask coordinators about their last incomplete case, how they resolve contradictory records and what they need at handoff. Observe them working through synthetic scenarios before claiming a benefit.</p></div><div class="mini-divider"><h3>Primary sources</h3><ul><li><a href="https://www.cancer.gov/research/participate/clinical-trials/what-are-clinical-trials" target="_blank" rel="noopener noreferrer">NCI · What are clinical trials?</a></li><li><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/eligibility-criteria" target="_blank" rel="noopener noreferrer">NCI · Eligibility criteria</a></li><li><a href="https://www.cancer.gov/research/participate/clinical-trials/what-to-expect" target="_blank" rel="noopener noreferrer">NCI · What to expect</a></li></ul><p class="muted">Source context checked for Checkpoint 1 on 17 November 2026. Clinical terminology is simplified for learning.</p></div><div class="mini-divider"><h3>Using this demo</h3><p>The scenario starts at 18 Nov 2026, 08:30 IST and advances with elapsed time. Your changes save in this browser where permitted. Use Reset demo to restore starting examples. Local history demonstrates traceability; it is not protected clinical storage.</p></div></section></div>`;
+  }
+  function sourceCard(c, check, source) {
+    const prediction = M.prediction(c.id,check.id);
+    const quoted = check.sourceId === source.id ? source.body : prediction?.sourceId === source.id ? prediction.quote : '';
+    const start = quoted ? source.body.indexOf(quoted) : -1;
+    const body = start < 0 ? h(source.body) : h(source.body.slice(0,start)) +
+      '<mark>' + h(quoted) + '</mark>' + h(source.body.slice(start+quoted.length));
+    return `<article class="source" tabindex="-1" id="source-${h(source.id.replaceAll(' ','-'))}"><div class="source-head"><strong>${icon('file')}${h(source.id)} · ${h(source.title)}</strong><span>${dateOnly(source.date)}</span></div><p>${body}</p></article>`;
+  }
+  function suggestionCard(c,check) {
+    const prediction = M.prediction(c.id,check.id);
+    if (!prediction) return '';
+    const latest = c.events.findLast(e=>e.kind==='AI suggestion reviewed' && e.checkId===check.id);
+    return `<section class="ai-inline"><div><h3>Simulated AI suggestion</h3><p>${h(prediction.status)} · ${prediction.sourceId ? `<button class="citation-link" data-action="evidence-link" data-id="${h(prediction.sourceId.replaceAll(' ','-'))}">${h(prediction.sourceId)}</button>` : 'No source cited'}</p>
+      ${latest ? `<p class="muted">${latest.tag ? 'Overridden' : 'Kept'} by ${h(latest.reviewer)} · ${format(latest.at)} IST${latest.tag ? ' · '+h(latest.tag) : ''}</p>` : ''}</div>
+      <div class="v2-actions">${['keep','override'].map(decision=>`<button class="btn ${decision==='override'?'primary':''}" data-action="ai-feedback" data-id="${c.id}" data-check="${check.id}" data-decision="${decision}">${decision==='keep'?'Keep suggestion':'Override'}</button>`).join('')}</div></section>`;
+  }
+  function feedbackDialog(id,checkId,decision) {
+    const c=M.getCase(state,id), ch=c.checks.find(x=>x.id===checkId), model=M.prediction(id,checkId);
+    showModal(decision==='override'?'Override simulated suggestion':'Keep simulated suggestion',`<p>Original suggestion: <strong>${h(model.status)}</strong>${model.sourceId?' · '+h(model.sourceId):''}</p>
+      <form data-form="ai-feedback"><input type="hidden" name="caseId" value="${id}"><input type="hidden" name="checkId" value="${checkId}"><input type="hidden" name="decision" value="${decision}">
+      ${decision==='override'?`<div class="form-grid"><div class="form-field"><label for="corrected">Corrected assessment</label><select id="corrected" name="status" required>${options(M.allStatuses(ch).slice(1),model.status,'Choose assessment')}</select></div>
+      <div class="form-field"><label for="error-tag">Error tag</label><select id="error-tag" name="tag" required>${options(M.ERROR_TAGS,'','Choose error type')}</select></div></div><div class="form-field"><label for="correct-source">Supporting source</label><select id="correct-source" name="sourceId" ${ch.sources.length?'required':''}>${options(ch.sources.map(x=>[x.id,x.id+' · '+x.title]),'','Choose source')}</select></div>`:''}
+      <div class="form-field"><label for="feedback-reason">Review reason</label><textarea id="feedback-reason" name="reason" maxlength="1200" ${decision==='override'?'required':''}></textarea></div>
+      ${reviewerField('feedback-reviewer')}${formError()}${formActions('Save AI review')}</form>`);
+  }
+  function dispositionDialog(id) {
+    showModal('Record match disposition',`<p>Choose the outcome for this fictional match. Pending cases can stay open with a follow-up.</p>
+      <form data-form="disposition"><input type="hidden" name="caseId" value="${id}">
+      <div class="form-field"><label for="disposition-category">Disposition category</label><select id="disposition-category" name="outcome" required>${options(M.DISPOSITIONS,'','Choose outcome')}</select></div>
+      <div class="form-field"><label for="verification">Eligibility verification</label><select id="verification" name="verified" required>${options([['yes','Verified eligible'],['no','Not eligible'],['unknown','Verification pending or unknown']],'','Choose verification status')}</select></div>
+      <div class="form-field"><label for="disposition-detail">Optional detail</label><textarea id="disposition-detail" name="reason" maxlength="1200"></textarea></div>${reviewerField('disposition-reviewer')}${formError()}${formActions('Save disposition')}</form>`);
+  }
+  function visitLabel(c) {
+    const minutes=Math.ceil((Date.parse(c.visit)-Date.parse(now()))/60000);
+    if (minutes<=0) return badge('Visit time passed','gray');
+    if (minutes<=120) return badge('Visit within 2 hours','amber');
+    return '';
+  }
+  function briefDialog(id) {
+    const c=M.getCase(state,id), b=M.visitBrief(c);
+    showModal('Visit brief preview',`<p>Fictional in-basket preview · Visit ${format(c.visit)} IST · ${h(c.owner)}</p><ul class="brief-list">
+      <li><strong>Potential trial</strong><span>${h(b.protocol)}</span></li>
+      <li><strong>Reviewed evidence</strong><span>${h(b.evidence)}${b.source ? ` · <button class="citation-link" data-action="brief-source" data-id="${h(c.id)}" data-check="${h(b.checkId)}" data-source="${h(b.source.id.replaceAll(' ','-'))}">${h(b.source.id)} (${dateOnly(b.source.date)})</button>` : ''}</span></li>
+      <li><strong>Remaining question</strong><span>${h(b.remaining)}</span></li>
+      <li><strong>Next action</strong><span>${h(b.next)}</span></li></ul><div class="v2-actions"><button class="btn" data-action="close-modal">Close preview</button></div>`);
+  }
+  function watchPage() {
+    const rows=M.watchlist(M.selectCases(state,ui.filters));
+    return `<div class="page-head"><div><h1>Near-miss watchlist</h1><p>Fictional cases with one reversible blocker and all other checks cleared.</p></div></div>
+      <section class="panel">${filterbar()}${rows.length?`<div class="table-scroll"><table class="data-table"><thead><tr><th>Pair</th><th>Remaining check</th><th>Owner</th><th>Review by</th><th>Trigger</th></tr></thead><tbody>${rows.map(({case:c,check,arrived,trigger,owner,due})=>`<tr><td><button class="btn" data-action="open-case" data-id="${c.id}" data-check="${check.id}">${c.id}</button></td><td>${h(check.title)}</td><td>${h(owner)}</td><td>${format(due)} IST</td><td><p>${h(trigger)}</p>${arrived?badge('Ready for reassessment','blue'):`<button class="btn primary" data-action="demo-evidence" data-id="${c.id}">Simulate new result</button>`}</td></tr>`).join('')}</tbody></table></div>`:empty('No watchlist cases in this view','Check the filters or reset the scenario to replay the pending result.')}</section>
+      <p class="snapshot-note v2-spaced">The simulated event appends a source and returns the check to review. Follow-up remains open until the coordinator resolves it.</p>`;
+  }
+  function bottleneckCard(cases) {
+    const rows=M.bottlenecks(cases);
+    return `<section class="panel chart-panel v2-spaced"><h2>Top disqualifying criteria</h2><p>Fictional sponsor view · All scenario dates · Applies queue filters. Denominators are fully reviewed pairs in each protocol.</p>
+      ${rows.length?`<div class="table-scroll"><table class="data-table"><thead><tr><th>Criterion</th><th>Protocol</th><th>Blocked pairs</th><th>Sole blocker</th><th>Reviewed pairs</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${h(x.criterion)}</td><td>${h(x.protocol)}</td><td>${x.blocked}</td><td>${x.sole}</td><td>${x.total}</td></tr>`).join('')}</tbody></table></div>`:'<p>No disqualifiers among fully reviewed pairs in this view.</p>'}</section>`;
+  }
+  function inspectorPage() {
+    const e=M.evaluation(state), tagged=e.feedback.filter(row=>row.tag);
+    const activity=M.reviewActivity(e.feedback);
+    const counts=M.ERROR_TAGS.map(tag=>[tag,tagged.filter(row=>row.tag===tag).length]);
+    const dispositions=state.cases.filter(c=>c.disposition), verified=dispositions.filter(c=>c.disposition.verified==='yes');
+    const enrolled=dispositions.filter(c=>c.disposition.outcome==='Enrolled').length;
+    return `<div class="page-head"><div><h1>AI Evaluation Inspector</h1><p>Compare authored predictions to a fixed synthetic reference set, then inspect the corrections recorded during review.</p></div><button class="btn" data-action="nav" data-page="memo">Read the product memo</button></div>
+      <div class="analytics-grid">${metric('Blocker precision',pct(e.tp,e.tp+e.fp),`${e.tp} of ${e.tp+e.fp} predicted blockers`,'chart')}${metric('Blocker recall',pct(e.tp,e.tp+e.fn),`${e.tp} of ${e.tp+e.fn} reference blockers`,'chart')}${metric('Citation accuracy',pct(e.correct,e.cited),`${e.correct} of ${e.cited} cited predictions`,'file')}</div>
+      <p class="snapshot-note">Fixed benchmark · ${e.total} authored criterion predictions. A blocker includes a check needing clarification. Citations require both the correct source and an exact excerpt. Review actions do not change the benchmark.</p>
+      <details class="panel chart-panel v2-spaced"><summary>Compare AI suggestions with expected answers</summary><div class="table-scroll"><table class="data-table"><thead><tr><th>Pair / criterion</th><th>Original AI suggestion</th><th>Expected result</th><th>Expected evidence</th></tr></thead><tbody>${e.rows.map(row=>`<tr><td><button class="citation-link" data-action="open-case" data-id="${row.caseId}" data-check="${row.checkId}">${row.caseId} · ${row.checkId}</button></td><td>${h(row.status)}</td><td>${row.referenceBlocks?'Blocks or needs review':'Criterion passes'}</td><td>${h(row.referenceSource || 'No single sufficient source')}</td></tr>`).join('')}</tbody></table></div></details>
+      <section class="v2-spaced" aria-labelledby="manual-review-title">
+        <div class="section-line"><h2 id="manual-review-title">Human review activity</h2></div>
+        <div class="analytics-grid manual-metrics">
+          ${metric('Suggestions reviewed',activity.reviewed,`Of ${e.total} simulated suggestions · includes kept and overridden`,'check')}
+          ${metric('Suggestions overridden',activity.overridden,`${activity.reviewed?pct(activity.overridden,activity.reviewed)+' of reviewed suggestions':'No reviewed suggestions yet'} · counted once per criterion`,'flag','purple')}
+          ${metric('Override actions',activity.overrideActions,'Includes repeat corrections to the same suggestion','tasks')}
+        </div>
+        <p class="snapshot-note">Activity is recorded for the simulated reviewer roles in this browser. The benchmark scores above use a fixed reference set.</p>
+      </section>
+      <div class="analysis-row v2-spaced"><section class="panel chart-panel"><h2>Failure modes</h2><p>Counts tagged override actions.</p><div class="legend-list v2-spaced">${counts.map(([tag,n])=>`<div class="legend-item"><span>${h(tag)}</span><strong>${n}</strong></div>`).join('')}</div></section>
+      <section class="panel chart-panel"><h2>Coordinator feedback</h2>${e.feedback.length ? `<ul class="definition-list">${e.feedback.map(row=>`<li><button class="citation-link" data-action="open-case" data-id="${row.caseId}" data-check="${row.checkId}">${row.caseId} · ${row.checkId}</button> · ${h(row.tag || 'Kept suggestion')}<br><strong>${row.tag ? 'Overridden' : 'Kept'} by ${h(row.reviewer)}</strong> · ${format(row.at)} IST<br>${h(row.originalStatus)} (${h(row.originalSource || 'no citation')}) → ${h(row.correctedStatus)} (${h(row.correctedSource || 'no citation')})<br>${h(row.reason)}<br><button class="btn review-brief" data-action="brief" data-id="${row.caseId}">Preview visit brief</button></li>`).join('')}</ul>` : '<p>Start with case C007 and override the outdated note to see feedback here.</p>'}</section></div>
+      <div class="analysis-row v2-spaced"><section class="panel chart-panel"><h2>Enrollment disposition</h2><p>Fictional portfolio cohort · a pair can close before formal handoff.</p><ul class="definition-list"><li>Suggested pairs <strong>${state.cases.length}</strong></li><li>Coordinator reviews completed <strong>${state.cases.filter(c=>c.completedAt).length}</strong></li><li>Clinical handoffs saved <strong>${state.cases.filter(c=>c.handoffAt).length}</strong></li><li>Recorded dispositions <strong>${dispositions.length}</strong></li><li>Verified eligible among recorded dispositions <strong>${verified.length}</strong></li><li>Enrolled <strong>${enrolled}</strong></li><li>Pairs without a recorded disposition <strong>${state.cases.length-dispositions.length}</strong></li>${M.DISPOSITIONS.filter(x=>x!=='Enrolled').map(label=>`<li>${label} <strong>${dispositions.filter(c=>c.disposition.outcome===label).length}</strong></li>`).join('')}</ul></section>
+      <section class="panel chart-panel"><h2>How to read the disposition counts</h2><p>Each row counts a fictional patient–trial pair. A verified outcome requires follow-up after screening. A documented patient decline is a valid disposition, and pairs still in progress remain open.</p></section></div>`;
+  }
+  function memoPage() {
+    return `<article class="panel guide-section product-memo"><h1>Beyond the Match</h1><p>Making oncology trial drop-offs visible · Akshata Anil Urs</p><h2 class="v2-spaced">Why this matters</h2><p>A potential match starts a review. A team still needs to distinguish an evidence gap, a confirmed blocker, and a documented patient or provider decision. The product question is whether capturing these outcomes in the review workflow gives the next person enough information to act. Scientific and clinical validation would require separate research.</p>
+      <h2 class="v2-spaced">What this prototype explores</h2><p>Capture a structured reason when a match closes. Keep reversible uncertainty on a watchlist and reopen review when new evidence arrives. Record coordinator corrections with links to the original and replacement sources so they can be inspected for evaluation and quality review.</p>
+      <h2 class="v2-spaced">How to measure it</h2><p>For a pilot, measure confirmed enrollments per clinically verified eligible pair within a defined follow-up window. Track the share of closed cases with a documented disposition, plus aging of open cases. A decline is a valid outcome. Count correction review time and agreement between reviewers before claiming less annotation work or improvement in model quality.</p>
+      <h2 class="v2-spaced">Evidence and scope</h2><p>The demo uses fictional cases and prewritten AI suggestions. The small evaluation set illustrates metric definitions. Clinical validity and operational impact would require a separate study.</p><ul><li><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/eligibility-criteria" target="_blank" rel="noopener noreferrer">National Cancer Institute · Eligibility criteria</a></li><li><a href="https://www.cancer.gov/research/participate/clinical-trials/what-to-expect" target="_blank" rel="noopener noreferrer">National Cancer Institute · What to expect during a clinical trial</a></li></ul></article>`;
+  }
+
+
+  function render(focusId = null) {
+    const focused = focusId && document.getElementById(focusId);
+    const selection = focused && focused.selectionStart;
+    const all = M.metrics(state.cases,now());
+    app.innerHTML = `<div class="layout"><aside class="sidebar"><a class="brand" href="#queue" aria-label="Trial Review Desk home"><span class="brand-mark">${icon('mark')}</span><span><strong>Trial Review Desk</strong><small>Research operations</small></span></a><div class="nav-caption">WORKSPACE</div><nav class="nav" aria-label="Workspace navigation">${navButton('queue','Review queue','queue',state.cases.length)}${navButton('tasks','Follow-ups','tasks',all.tasks)}${navButton('analytics','Analytics','chart')}${navButton('watch','Watchlist','clock',M.watchlist(state.cases).length)}${navButton('guide','Project guide','book',null,'nav-guide')}</nav><div class="sidebar-bottom"><p class="project-label">PORTFOLIO PROJECT</p><div class="author"><span class="avatar">AU</span><span><strong>Akshata Anil Urs</strong><small>Product management portfolio</small></span></div></div></aside><div class="workspace"><header class="topbar"><div class="breadcrumbs"><span>Research operations</span>${icon('chevron')}<span>${ui.page === 'inspector' ? 'AI Evaluation Inspector' : 'Coordinator Workbench'}</span></div><div class="top-actions"><div class="clock-block">Scenario time <strong id="clock">${format(now())} IST</strong></div><div class="actor"><label for="acting-as">Reviewing as · simulated</label><select id="acting-as">${options(M.PEOPLE,ui.actor)}</select></div></div></header><div class="scenario-banner">${icon('info')}Portfolio demo · fictional records and protocols · clinical eligibility requires professional review<button data-action="nav" data-page="guide">About this project ${icon('arrow')}</button></div><main class="main" id="main" tabindex="-1"><nav class="modes" aria-label="Workspace mode"><button class="btn ${ui.page==='inspector'?'':'primary'}" aria-pressed="${ui.page!=='inspector'}" data-action="nav" data-page="queue">Coordinator Workbench</button><button class="btn ${ui.page==='inspector'?'primary':''}" aria-pressed="${ui.page==='inspector'}" data-action="nav" data-page="inspector">AI Evaluation Inspector</button></nav>${!storageOK ? '<p class="storage-warning">Changes are available for this session only because this browser blocked local saving. Keep the tab open while reviewing.</p>' : ''}${recovery ? '<p class="storage-warning">The previous saved demo could not be restored. A fresh fictional dataset has been loaded.</p>' : ''}${ui.page === 'case' ? casePage() : ui.page === 'analytics' ? analyticsPage() : ui.page === 'tasks' ? tasksPage() : ui.page === 'guide' ? guidePage() : ui.page === 'watch' ? watchPage() : ui.page === 'inspector' ? inspectorPage() : ui.page === 'memo' ? memoPage() : queuePage()}${footer()}</main></div></div>`;
+    if (focusId) { const f = document.getElementById(focusId); if (f) { f.focus(); if (selection !== null && typeof selection === 'number' && f.type === 'search') f.setSelectionRange(selection,selection); } }
+  }
+  function persist() { try { localStorage.setItem(KEY,JSON.stringify(state)); storageOK = true; recovery = false; } catch { storageOK = false; } }
+  function toast(message) { const el=document.getElementById('toast'); clearTimeout(toastTimer); el.textContent=message; el.classList.add('visible'); toastTimer=setTimeout(()=>el.classList.remove('visible'),4300); }
+  function readRoute() {
+    const parts = location.hash.slice(1).split('/');
+    if (parts[0] === 'case' && state.cases.some(c=>c.id===parts[1])) {
+      const changed = ui.caseId !== parts[1] || ui.page !== 'case' || !!parts[2]; ui.page='case'; ui.caseId=parts[1];
+      if (changed) { const c=currentCase(); ui.tab='evidence'; ui.checkId=c.checks.find(ch=>ch.id===parts[2])?.id || (c.checks.find(ch=>['Insufficient information','Conflicting evidence','Not reviewed'].includes(ch.status)) || c.checks[0]).id; }
+    } else ui.page = ['queue','tasks','analytics','guide','watch','inspector','memo'].includes(parts[0]) ? parts[0] : 'queue';
+    render();
+    if (ui.pendingSource && ui.page === 'case') {
+      const target = document.getElementById('source-' + ui.pendingSource);
+      ui.pendingSource = null;
+      if (target) { target.focus(); target.scrollIntoView({block:'center'}); return; }
+    }
+    window.scrollTo({top:0});
+  }
+  function navigate(path) { if (location.hash === '#'+path) { readRoute(); } else location.hash=path; }
+  function closeModal() { modal.close(); }
+  function showModal(title, body) {
+    modal.innerHTML=`<div class="modal-body"><div class="modal-top"><h2 id="modal-title">${h(title)}</h2><button class="close-btn" data-action="close-modal" aria-label="Close dialog">${icon('x')}</button></div>${body}</div>`;
+    modal.showModal();
+  }
+  function formError() { return '<p class="error" id="modal-error" role="alert"></p>'; }
+  function formActions(label,danger=false) { return `<div class="form-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn ${danger?'danger':'primary'}">${label}</button></div>`; }
+  function taskDialog(caseId) {
+    const c=M.getCase(state,caseId);
+    showModal('Assign a follow-up',`<p>Attach the question to a check and record who should resolve it. This saves a fictional task; no message is sent.</p><form data-form="task"><input type="hidden" name="caseId" value="${c.id}"><div class="form-field"><label for="task-check">Protocol check</label><select id="task-check" name="checkId" required>${options(c.checks.map(x=>[x.id,x.id+' · '+x.title]),ui.checkId)}</select></div><div class="form-field"><label for="task-issue">Question or missing information</label><textarea id="task-issue" name="issue" required maxlength="1200" placeholder="Describe the clarification needed…"></textarea></div><div class="form-grid"><div class="form-field"><label for="task-owner">Follow-up owner</label><select id="task-owner" name="owner" required>${options(M.PEOPLE,'','Choose owner')}</select></div><div class="form-field"><label for="task-due">Due date and time · IST</label><input id="task-due" name="due" type="datetime-local" required value="2026-11-18T09:00"></div></div>${reviewerField('task-reviewer')}${formError()}${formActions('Save follow-up')}</form>`);
+  }
+  function resolveDialog(caseId,taskId) {
+    const c=M.getCase(state,caseId),t=c.tasks.find(x=>x.id===taskId);
+    showModal('Resolve follow-up',`<p>${h(t.issue)}</p><p class="modal-note">Resolving this task will not change ${h(t.checkId)} automatically. Reassess the check separately when evidence is available.</p><form data-form="resolve"><input type="hidden" name="caseId" value="${c.id}"><input type="hidden" name="taskId" value="${h(t.id)}"><div class="form-field"><label for="resolve-reason">Resolution note</label><textarea id="resolve-reason" name="reason" required maxlength="1200" placeholder="Explain what was resolved and reference the source…"></textarea></div>${reviewerField('resolve-reviewer')}${formError()}${formActions('Resolve task')}</form>`);
+  }
+  function outcomeDialog(kind,caseId) {
+    const c=M.getCase(state,caseId), completion=kind==='complete', expected=M.negativeOutcome(c)?'Not supported on current evidence':'Potential fit for clinical review';
+    showModal(completion?'Complete coordinator review':'Save clinical handoff',`<p>${completion?'Record the outcome of the coordinator task. This does not determine clinical eligibility or enroll a patient.':'Record a potential fit for qualified clinical review. This saves a local handoff entry; it does not send a referral.'}</p><form data-form="${kind}"><input type="hidden" name="caseId" value="${c.id}">${completion?`<div class="form-field"><label for="outcome">Recorded outcome</label><select id="outcome" name="outcome" required>${options([expected],expected)}</select></div>${M.negativeOutcome(c) ? '<div class="form-field"><label for="closure-disposition">Closure reason category</label><select id="closure-disposition" name="disposition" required><option value="">Choose reason</option><option>Ineligible</option></select></div>' : ''}`:''}<div class="form-field"><label for="outcome-reason">${completion?'Completion':'Handoff'} reason</label><textarea id="outcome-reason" name="reason" required maxlength="1200" placeholder="Summarize the reviewed evidence and next step…"></textarea></div>${reviewerField('outcome-reviewer')}${formError()}${formActions(completion?'Complete review':'Save handoff')}</form>`);
+  }
+  function updateDialog(caseId) {
+    showModal('Load a fictional evidence update',`<p>${caseId==='C001'?'Add DOC A4, an invented result report saying DemoMarker A detected. The existing pending-result note will remain visible.':'Add an invented note that disagrees with the marker report in C006. This will reopen the completed coordinator review.'}</p><p class="modal-note">The affected check returns to Not reviewed. Prior assessments and outcomes stay in history. You must review the new evidence explicitly.</p><form data-form="evidence"><input type="hidden" name="caseId" value="${caseId}">${reviewerField('update-reviewer')}${formError()}${formActions('Load fictional update')}</form>`);
+  }
+  document.addEventListener('click',function(e){
+    const button=e.target.closest('[data-action]'); if(!button || button.disabled)return;
+    const {action,id,page,task}=button.dataset;
+    try {
+      if(action==='nav')navigate(page);
+      else if(action==='open-case')navigate('case/'+id+(button.dataset.check?'/'+button.dataset.check:''));
+      else if(action==='evidence-link') {
+        const target = document.getElementById('source-' + id);
+        if (modal.open) closeModal();
+        if (target) { target.focus(); target.scrollIntoView({block:'center'}); }
+      }
+      else if(action==='ai-feedback') feedbackDialog(id,button.dataset.check,button.dataset.decision);
+      else if(action==='brief') briefDialog(id);
+      else if(action==='brief-source') {
+        closeModal();
+        ui.pendingSource = button.dataset.source;
+        navigate('case/' + id + '/' + button.dataset.check);
+      }
+      else if(action==='disposition') dispositionDialog(id);
+      else if(action==='clear-filters'){ui.filters={search:'',protocol:'',owner:'',status:''};render();}
+      else if(action==='select-check'){ui.checkId=id;render();}
+      else if(action==='case-tab'){ui.tab=id;render();}
+      else if(action==='task-filter'){ui.taskFilter=id;render();}
+      else if(action==='new-task')taskDialog(id);
+      else if(action==='resolve-task')resolveDialog(id,task);
+      else if(action==='handoff'||action==='complete')outcomeDialog(action,id);
+      else if(action==='demo-evidence')updateDialog(id);
+      else if(action==='close-modal')closeModal();
+      else if(action==='reset')showModal('Reset the fictional workspace',`<p>This restores all 10 starting pairs, original fictional events, filters and scenario time. Your demonstration actions in this browser will be cleared.</p><form data-form="reset">${formActions('Reset demo',true)}</form>`);
+    }catch(err){toast(err.message);}
+  });
+  document.addEventListener('input',e=>{if(e.target.id==='search'){ui.filters.search=e.target.value;render('search');}});
+  document.addEventListener('change',e=>{if(e.target.dataset.filter){ui.filters[e.target.dataset.filter]=e.target.value;render(e.target.id);}else if(e.target.id==='acting-as'){ui.actor=e.target.value;render('acting-as');}});
+  document.addEventListener('submit',function(e){
+    const form=e.target.closest('[data-form]'); if(!form)return; e.preventDefault();
+    const data=Object.fromEntries(new FormData(form)),type=form.dataset.form;
+    const error=document.getElementById(type==='assessment'?'assessment-error':'modal-error'); if(error)error.textContent='';
+    try {
+      const next=M.clone(state),at=now(); let message='Saved.';
+      if(type==='assessment'){M.assess(next,data,at);message='Assessment saved. Decision history updated.';}
+      else if(type==='ai-feedback'){M.reviewPrediction(next,data,at);message='AI review saved in the Evaluation Inspector and decision history.';}
+      else if(type==='disposition'){M.disposition(next,data,at);message='Structured disposition recorded.';}
+      else if(type==='task'){data.dueAt=data.due+'+05:30';M.addTask(next,data,at);message='Follow-up assigned. No message was sent.';}
+      else if(type==='resolve'){M.resolveTask(next,data,at);message='Task resolved. The check assessment is unchanged.';}
+      else if(type==='handoff'){M.handoff(next,data,at);message='Clinical handoff saved for this demonstration.';}
+      else if(type==='complete'){M.complete(next,data,at);message='Coordinator review complete. Clinical eligibility still requires verification.';}
+      else if(type==='evidence'){M.addDemoEvidence(next,data,at);ui.checkId=M.getCase(next,data.caseId).checks[1].id;ui.tab='evidence';message='Fictional evidence added. A fresh assessment is required.';}
+      else if(type==='reset'){state=M.createSeed();ui.filters={search:'',protocol:'',owner:'',status:''};ui.actor='Coordinator A';ui.tab='evidence';persist();closeModal();navigate('queue');toast('Demo reset. Starting examples restored.');return;}
+      else throw new Error('Unknown action.');
+      state=next;if(data.reviewer)ui.actor=data.reviewer;persist();if(type!=='assessment')closeModal();render();toast(message);
+    }catch(err){if(error)error.textContent=err.message;else toast(err.message);}
+  });
+  document.addEventListener('keydown',e=>{
+    const tab=e.target.closest('[role="tab"]');
+    if(tab&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){
+      e.preventDefault();const tabs=[...document.querySelectorAll('[role="tab"]')],i=tabs.indexOf(tab),n=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+      ui.tab=tabs[n].dataset.id;render();document.querySelector(`[role="tab"][data-id="${ui.tab}"]`).focus();
+    }
+  });
+  window.addEventListener('hashchange',readRoute);
+  setInterval(()=>{const clock=document.getElementById('clock');if(clock)clock.textContent=format(now())+' IST';const overdue=document.getElementById('overdue-tag');if(overdue)overdue.textContent=M.metrics(M.selectCases(state,ui.filters),now()).overdue;},15000);
+  persist(); readRoute();
+})();
+
+</script>
+</body>
+</html>
