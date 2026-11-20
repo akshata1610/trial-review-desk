@@ -2,7 +2,9 @@
 
 An independent product management portfolio project by **Akshata Anil Urs**. Trial Review Desk is a browser-based prototype for reviewing possible oncology trial matches. It connects a protocol check to its source evidence, records who owns the next step, and shows how coordinators corrected simulated AI suggestions.
 
-**[Open the live website](https://trial-review-desk-akshata.lovelybell1.chatgpt.site/)** · **[Watch the 2:46 walkthrough](dist/media/trial-review-desk-demo.mp4)** · [Read the transcript](docs/Walkthrough_Transcript.md)
+**[Open the live website](https://trial-review-desk-akshata.lovelybell1.chatgpt.site/)** · **[Watch the 2:45 walkthrough](https://trial-review-desk-akshata.lovelybell1.chatgpt.site/demo)** · [Read the transcript](docs/Walkthrough_Transcript.md)
+
+[Download the walkthrough MP4](dist/media/trial-review-desk-demo.mp4)
 
 ## What to try
 
