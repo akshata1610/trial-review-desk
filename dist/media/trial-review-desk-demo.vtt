@@ -1,112 +1,89 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:08.002
-Imagine a trial coordinator opens a promising match. One test
-result is missing. Who checks for it? And how will the next
+00:00:00.000 --> 00:00:08.040
+Trial Review Desk helps clinical research coordinators
+review possible cancer trial matches.
 
-00:00:08.002 --> 00:00:09.854
-reviewer know what happened?
+00:00:08.040 --> 00:00:17.240
+It brings the evidence, follow-up, and the reason for
+each decision into one workspace.
 
-00:00:09.854 --> 00:00:17.181
-Trial Review Desk is my independent product portfolio prototype
-for oncology trial pre-screening. I built it around the work
+00:00:17.240 --> 00:00:22.240
+Each row pairs a fictional patient with a trial
+protocol.
 
-00:00:17.181 --> 00:00:23.681
-that follows a possible match: reviewing evidence, assigning the
-next step, and making the decision traceable.
+00:00:22.240 --> 00:00:31.080
+The queue shows upcoming visits, review progress, and
+who owns each case.
 
-00:00:23.681 --> 00:00:28.750
-Everything you see uses fictional cases and simulated AI
-suggestions.
+00:00:31.080 --> 00:00:35.600
+Case one is waiting on a single test result.
 
-00:00:28.750 --> 00:00:36.292
-In the Coordinator Workbench, each row pairs a fictional patient
-with a trial protocol. The queue makes it easy to see upcoming
+00:00:35.600 --> 00:00:41.720
+The watchlist shows the owner and the event that brings
+the case back.
 
-00:00:36.292 --> 00:00:39.083
-visits, review progress, and who owns the case.
+00:00:41.720 --> 00:00:48.400
+When a fictional report arrives, the coordinator
+rechecks the evidence.
 
-00:00:39.083 --> 00:00:46.833
-Here, case one is a near miss. A single biomarker result is
-outstanding. The watchlist keeps the remaining check, the owner,
+00:00:48.400 --> 00:00:54.920
+The follow-up stays open until it is resolved.
 
-00:00:46.833 --> 00:00:49.957
-and the event that should bring it back to review.
+00:00:54.920 --> 00:00:58.760
+Case five shows a confirmed exclusion.
 
-00:00:49.957 --> 00:00:55.023
-I simulate the new report. The case is now ready for
-reassessment.
+00:00:58.760 --> 00:01:03.840
+The handoff stays blocked even when the inclusion checks
+pass.
 
-00:00:55.125 --> 00:01:02.114
-The new excerpt appears alongside the original pending note. The
-coordinator reviews the new evidence explicitly.
+00:01:03.840 --> 00:01:10.400
+A structured reason explains why the match was closed.
 
-00:01:02.114 --> 00:01:09.832
-The follow-up stays open until someone resolves it with a note.
-A new result and a completed task are two separate events.
+00:01:10.400 --> 00:01:16.720
+In case seven, the simulated AI suggestion relies on an
+older note.
 
-00:01:09.832 --> 00:01:17.944
-Case five shows the other path. A confirmed exclusion blocks the
-handoff, even when the inclusion checks pass. A structured
+00:01:16.720 --> 00:01:20.080
+The evidence panel shows both dated excerpts.
 
-00:01:17.944 --> 00:01:20.648
-reason records why this match was closed.
+00:01:20.080 --> 00:01:28.760
+The current note supports a different answer for this
+fictional criterion.
 
-00:01:20.648 --> 00:01:28.624
-Now the part I find most interesting. In case seven, the
-simulated AI says a check is not met. Its citation points to an
+00:01:28.760 --> 00:01:37.360
+The coordinator selects Override, cites the current
+note, and tags the error as an outdated note.
 
-00:01:28.624 --> 00:01:35.403
-older note. The fictional protocol asks for the current
-assessment, which supports a different answer.
+00:01:37.360 --> 00:01:45.920
+After saving, the case shows who changed the suggestion,
+when, and why.
 
-00:01:35.403 --> 00:01:43.264
-I open Override, mark the check as met, choose Outdated note,
-and cite the current excerpt. Then I save the reason as
+00:01:45.920 --> 00:01:52.600
+The AI Evaluation Inspector keeps the original
+prediction and the correction visible.
 
-00:01:43.264 --> 00:01:44.205
-Coordinator B.
+00:01:52.600 --> 00:01:59.680
+It counts suggestions reviewed, unique suggestions
+overridden, and total override actions.
 
-00:01:44.205 --> 00:01:50.928
-The original suggestion remains visible. The case now shows who
-overrode it, when, and why.
+00:01:59.680 --> 00:02:05.920
+The benchmark uses a fixed set of fictional examples.
 
-00:01:50.928 --> 00:01:58.544
-The Inspector shows blocker precision, recall, and citation
-accuracy against seven authored examples. Below that, I can see
+00:02:05.920 --> 00:02:10.480
+The same Inspector entry opens a short visit brief.
 
-00:01:58.544 --> 00:02:06.099
-how many suggestions humans reviewed, how many they overrode,
-and how many override actions they took. A repeat correction
+00:02:10.480 --> 00:02:16.280
+It shows reviewed evidence, the open question, and the
+next step.
 
-00:02:06.099 --> 00:02:07.771
-increases the action count.
+00:02:16.280 --> 00:02:22.480
+Selecting the citation opens the original excerpt.
 
-00:02:08.136 --> 00:02:15.380
-The correction log shows the original and revised answers with
-their sources. That gives a product team a concrete error to
+00:02:22.480 --> 00:02:29.840
+Analytics shows how reviews progress and which protocol
+checks block cases.
 
-00:02:15.380 --> 00:02:16.087
-investigate.
-
-00:02:16.087 --> 00:02:23.854
-From the same entry, I can preview a short visit brief with the
-reviewed evidence, the open question, and the next action. Its
-
-00:02:23.854 --> 00:02:26.134
-citation takes me back to the source.
-
-00:02:26.134 --> 00:02:33.317
-The analytics view brings together review progress, unresolved
-work, and turnaround. The broader product question is simple:
-
-00:02:33.317 --> 00:02:37.198
-after a match is surfaced, can the team explain what happened
-next?
-
-00:02:37.198 --> 00:02:45.133
-I would test that with coordinators and measure how often they
-reach a documented next step. Try cases one and seven in the
-
-00:02:45.133 --> 00:02:45.778
-live demo.
+00:02:29.840 --> 00:02:45.000
+The goal is a clear next step for every possible match,
+with evidence and a reason the team can trace.
